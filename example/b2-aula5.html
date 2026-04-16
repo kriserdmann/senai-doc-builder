@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 5 - Notificações Push e Encerramento Avaliativo | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="lesson" data-id="b2-aula5">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>SENAI</h2>
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="hero">
+      <span class="status-pill">Bloco 2 | Aula 5 (6h)</span>
+      <h1>Interações Background Base (Push Notifications) e Avaliação</h1>
+      <p>Dominando a engenharia reversa atrelada na API das Notificações doFirebase Cloud Messaging (FCM) OS e encerrando as ramificações de hardware da segunda etapa do projeto integrador prático.</p>
+    </header>
+
+    <div class="callout warning">
+      <h4>🚨 Firebase Services Android OS Configuration Restrito</h4>
+      <p>No desenvolvimento Mobile Base corporativo purificado nativo cego subjacente, o sistema de envio passivo silencioso nas cortinas do aparelho exige implacavelmente que as credenciais do Google estejam estritas no arquivo <code>google-services.json</code> ancorado dentro da sub-pasta raiz estórica limitante do android base do OS cego Android local limitante injetável de pastas `/android/app`. Falhar neste setup fará o `run-android` morrer violentamente engasgado na gradle purificada subjacente cruzada cega atrelada local.</p>
+    </div>
+
+    <section>
+      <h2>🎯 Objetivos de Aprendizagem</h2>
+      <ul class="capabilities-list">
+        <li><strong>Visão Geral Cega Subjacente da Firebase Architecture:</strong> Compreender porque não mandamos alertas diretos do PC backend pro celular restrito focado base, e sim do PC local injetamos numa Google Infrastructure Service massivo C++ blindando o disparo cruzável silencioso celular Android OS ativo cru e Apple APNs limpo ativo perene subjacente na RAM do hardware físico ativo passivo isolado cruzado emulador.</li>
+        <li><strong>Instalação Sistêmica Tática Limitante Core Nativa:</strong> Anexar pacotes isoladores brutos no manifesto raiz e integrar o injetável plugin `react-native-firebase/app` limpo e `messaging` OS passivo do OS OS atrelado num Build-Cycle em Android passivo Android.</li>
+        <li><strong>Escuta Condicional Ativa no App Focus React JS:</strong> Distinguir estritamente se o Alerta tocou restritivo base celular e o App estava fechado cravado em Background (onde a aba Notificação sistema abre nativamente puro fora do DOM JSX JS subjacente OS nativos estático log) e se o App estava Ativo (Mudo puro focado na RAM crua atrelada cega The Bridge).</li>
+        <li><strong>Realizar Exame e Fechar Ciclo Base do Acesso Subjacente:</strong> Realizar com exatidão a <strong>Avaliação Objetiva 02</strong> encerramento massivo abordando integrações profundas cegas e persistência local, JWT Base Segurança contida nas frentes corporativas passivas e as chamadas Rest engasgadas.</li>
+      </ul>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <section>
+      <h2>📖 Teoria: O Efeito Firebase Base do Alavancador Invisível (FCM/APN Native Push OS)</h2>
+      
+      <p>Ao desbravar as trincheiras e ferramentas de uma solução mobile corporativa de vanguarda contida restrita aos emuladores de ensino simulados OS atrelados purificados num laboratório industrial isolado limitante cruzado nativamente nas RAM das workstations, nos topamos invariavelmente restritivos engarrafados base focados num fluxo vital reverso focado mudo local celular. Diferente do Fetch API limpo nativo onde O SEU APP "Perguntava local atrelado passivo visualmente na API base" se havia demandas (Modo Pool focado atrelado no botão), a necessidade real requer o sistema "Avisar passivo Base Subjacente Subjetiva atrelado a você" sem que haja clique ou tela aberta cruzada no Hardware cravado. Esse é o império atrelado puramente engessado nas <strong>Push Notifications</strong> (O Modo Push Base OS de hardware isolante).</p>
+      
+      <p>Entregar um pacote textual isolador limpo reacionário (Ex: "Máquina explodindo Base Extrator 4 OS") a um telefone Android subjacente inativo na prateleira bloqueado não é um trabalho simples de REST e TCP Base JS do React OS puramente DOM passivo visual. Ele quebraria todas lógicas e sugaria inteiramente toda bateria cruzada limitante subjacente purificando o ciclo focado e pingando nas antenas brutas nativas e lendo 5G do Hardware Base atrelado passivo cego local cruzado silencioso no kernel Android Base OS. Para solucionar essa arquitetura letal e impossível limpo, o Google criou um cano fixo e onipresente puramente binário em todos os celulares Android estrito base limpo com C++ atrelado profundo no OS subjacente cruzado silenciado isolado (Google Play Services) conectado diretamente a matriz (Firebase Cloud Messaging - FCM).</p>
+      
+      <p>Na sua base corporativa local atrelada, o Backend de Controle OS (Java/Node) dispara a falha limpa isoladora para servidores firebase OS base nativos com o Device Token isolado cruzado base do seu equipamento celular do usuário. Então o Firebase e OS cruzado limitante subjacente local Android OS estático local repassam local puramente limpo invisível mudo ao componente cruzado silenciador do Hardware Base limitante fechada OS base que bate bumbo no emulador OS restrito (Surgindo na Notification Drawer tática local do aparelho nativo focado cruzado). Ou seja, <strong>seu React local mudo não geras e não pega sozinho o alerta base passivo do Firebase C++ OS cego</strong> quando fechado, o Android toma conta cruzada e atrelada base nativa isoladora cega e constrói o card tático visual sem chamar 1 linha do JS Code JSX passivo do DOM OS do seu Bundle Metro.</p>
+
+      <p>O que altera e demanda puramente maestria passiva OS é se o aplicativo estiver ativo visual aberto focado cruzado base (Background VS Foreground Nativo Isolado). Se o empregado tá na tela, o OS do celular base silencia as caixinhas nativas subjacentes cruzadas passivas OS porque a engine "react-native-firebase" recebe subitamente subjacente tático nativo cego a mensagem direto e repassa limpo ao hook reacionário `onMessage` do The Bridge JS subjacente local cruzado OS! Cabe então ao Engenheiro Base local tático forjar passivamente via View JS e Snackbar JSX cru cruzado a visualização que outrora ocorria no sistema base! Além disso, em ambientes simulados puros atrelados no laboratório do emulador tático Android, disparamos pacotes de testes usando scripts FCM limitantes OS puros sem necessidade da interface pesada no Node isolado puro subjacente cruzada na matriz AWS.</p>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <section>
+      <h2>🛠️ Passo a Passo (Mão na Massa - Montagem de Infraestrutura Invisível FCM Firebase OS)</h2>
+
+      <p><strong>1º Passo: Registro no Portal Matrix e as Chaves Base do Reino Native</strong><br>
+      Acesse console silenciosa isolante `console.firebase.google.com` (Use cega conta google purificada senai tática), vincule pacote "Android" provendo estritamente id do OS passivo atrelado <code>com.senai.seuapp.logistica</code> extraído passivo reverso local no arquivo `android/app/build.gradle`. Baixe o `google-services.json` blindado para a infra crua atrelada nativa celular base na pasta pura <code>/android/app</code>.</p>
+      
+      <p><strong>2º Passo: Instalações Brutas C++ Core da Gradle</strong><br>
+      Execute a instalação isolada purificada OS limitante `npm install @react-native-firebase/app @react-native-firebase/messaging` e engatilhe base limitante OS o re-build massivo subjacente atrelado puro do gradle via OS local `npx react-native run-android`. É massivo risco de crash se o JSON do google faltar no root base atrelado puro OS.</p>
+      
+      <p><strong>3º Passo: Dissecando Funções Subjacentes Isoladoras e Inscrições no JS The Bridge Nativa OS</strong><br>
+      Crie função estrita purificada no Component pai `App.tsx` para solicitar <code>await messaging().requestPermission()</code> perfeitamente exigido novo OS Android 13 Tiramisu Notification base permission ativa nativa OS e crie hook atrelador local atrelado passivo cego `messaging().getToken()` anotando o Hash do simulador estático OS pra envio de script limitável silencioso futuro cego cruzado na infra purificada focado API OS base nativa celular local!</p>
+    </section>
+
+    <section>
+      <h2>💻 Exemplos Analisados (O Código Isolador e Eventos Subjacentes C++ OS)</h2>
+      
+      <p><strong>Exemplo 1: Arquitetura Estrita Central com Captura Fore-ground Isolada da Tela</strong></p>
+      <p>No componente base raiz (por exemplo <code>App.tsx</code>), nós ancoramos passivamente os loops e listeners base silenciadores cruzados brutos do Firebase OS atrelado no the bridge local nativo.</p>
+      <pre><code>
+import React, { useEffect, useState } from 'react';
+import { View, Text, Alert } from 'react-native';
+// Módulo Cego Nativo e interceptador de pacotes JSON c++ FCM Firebase
+import messaging from '@react-native-firebase/messaging';
+
+const AppNativoEscutadorFCM = () => {
+   
+   useEffect(() => {
+      // Engatilhando O OS Nativo limitante blindado pra emitir Popup Dialog Native OS pedindo liberação no Android Tiramisu 13 OS.
+      const acoplarProteçãoBlindarSO = async () => {
+         const authBoleanaBaseOk = await messaging().requestPermission();
+         const estritamenteLiberouNoPromptLocalSilencioso = 
+           authBoleanaBaseOk === messaging.AuthorizationStatus.AUTHORIZED || 
+           authBoleanaBaseOk === messaging.AuthorizationStatus.PROVISIONAL;
+
+         if(estritamenteLiberouNoPromptLocalSilencioso) {
+             const tokenApuradoMudoCegoHashBaseOS = await messaging().getToken();
+             console.log("MANDAR AO SERVIDOR BACKEND SUA PLACA DE CELULAR: ", tokenApuradoMudoCegoHashBaseOS);
+         }
+      };
+
+      acoplarProteçãoBlindarSO();
+
+      // Listener (Event Hook Focado Ativo Background Base nativo Local). 
+      // Esta purificada arrow function local só desencadeia se e somente o usuario na tela OS nativa logado tático puro!
+      const ouvinteAtivoDoConsoleFrontOS = messaging().onMessage(async remotoPacoteJsonFCMBase => {
+          // Destilando a notificação passiva bloqueada cega nativa OS e desenhando cego Alert React Local Subjacente Tático!
+          Alert.alert('Alerta Interno do Pátio JS Ativo Base', JSON.stringify(remotoPacoteJsonFCMBase.notification));
+      });
+
+      // Isolamento tático de encerramentos base desmembramentos para limpeza GC (Garbage)
+      return ouvinteAtivoDoConsoleFrontOS; 
+   }, []);
+
+   return (
+       &lt;View style&#61;{{flex: 1, padding: 50, justifyContent: 'center'}}&gt;
+           &lt;Text&gt;Aguardando Evento Focado Cru OS no Background OS Passivo Nativo&lt;/Text&gt;
+       &lt;/View&gt;
+   );
+};
+
+export default AppNativoEscutadorFCM;
+      </code></pre>
+
+      <p><strong>Exemplo 2: Background Limitante Forjado no Index de Base Root Android API</strong></p>
+      <p>Quando morto ativo subjacente atrelado na RAM ou em gavetas OS passiva base sem UI focado, o aplicativo base crua precisa puramente escutar passivos via `setBackgroundMessageHandler` estrito no cume logístico do index.js injetário logado cruzado isolador (Fora de Views).</p>
+      <pre><code>
+// Arquivo intocado isolado: index.js do App Base Nativo Root
+import {AppRegistry} from 'react-native';
+import App from './App';
+import {name as appName} from './app.json';
+import messaging from '@react-native-firebase/messaging';
+
+// Registrador e Empacotador Assincrono OS Base Nativa Cega Cruzada Limitante Inativa Passiva OS Isolante Subjacente
+// Ele escuta e puramente salva DB ou processa dados SEM exibir Views DOM base nativa do JS C++ Engine The Bridge OS!
+messaging().setBackgroundMessageHandler(async remoteMessageBackgroundTaticaOS => {
+  console.log('Mensagem Interceptada Puramente Com O Motor Inativo OS e DOM fechado focado Tático', remoteMessageBackgroundTaticaOS);
+});
+
+AppRegistry.registerComponent(appName, () => App);
+      </code></pre>
+    </section>
+
+    <!-- Avaliação Final do Módulo 02 -->
+    <section id="avaliacao2">
+      <h2>🎓 Avaliação Objetiva 02 (Encerramento do Bloco 2)</h2>
+      <div class="callout warning">
+        <h4>Atenção: Validação Híbrida Técnica Corporativa da Matriz</h4>
+        <p>A presente etapa culmina estrita e obrigatoriamente na realização cega sistêmica da <strong>Avaliação Objetiva do Módulo 2</strong> na malha do sistema institucional de qualificação teórica formal.</p>
+        <p>Serão analisados subjacente atrelamentos nativos isolados OS (Sensores Base AndroidManifest atrelados e Hardware cego cruzando Bridge), engrenagens de arquiteturas RESTful com barramento interceptor em Axios, a blindagem OS cravada dos JWT em cofres criptográficos táticos AES nativos no dispositivo subjacente cego Android, bem como as diferenças extremas em lógicas engasgadas Async de Notification Background limitante VS I/O ForeGround JS Nativo base silenciador mudo! Tenha sucesso!</p>
+      </div>
+    </section>
+
+    <!-- Resumo Direto ao Ponto -->
+    <section>
+      <h2>📍 Resumo Direto ao Ponto (Encerramento de Módulo)</h2>
+      <ul class="capabilities-list">
+        <li><strong>Terceirização Ativa de Disparos Limitantes:</strong> A infraestrutura não manda pings do seu Back-end em Node ou Java atrelados pra interface direto do dispositivo OS celular do empregado, poupa rede passiva atrelada entregando do Firebase Cloud Messaging do Google injetável mudo na Matrix OS do Android.</li>
+        <li><strong>Abismo Operacional (Foreground vs Background):</strong> O React The Bridge UI é estritamente ativo cego puramente para DOM Local Subjacente OS celular interceptando (onMessage) passivos alertas apenas via tela acesa aberta focado. Ao estagnar travado fundo OS RAM, lógicas cegas silenciam App.tsx focando a ação pro index.js tático Headless nativos crus.</li>
+        <li><strong>Autenticação Atrelada a Sensores Limpos (google-services.json):</strong> Falhas colossais isolantes nos build gradle base OS ao integrar Firebase Firebase proveem massivamente pura estática e ausência tática desse atrelado JSON contido purificando o app raiz `android/app` travando o motor C++.</li>
+        <li><strong>Permissionamento Secundário Nível App Base Atrelado Tiramisu 13 OS:</strong> Android antigos liam estritamente notificações sem o operador concordar visual passivamente; hoje a mecânica atua forjada reacionária OS invocando o popup cego `requestPermission` base pra habilitar e interceptar pings focado OS.</li>
+        <li><strong>Fim de Ciclo Arquitetural Base Restrito:</strong> Este bloco purifica as lógicas profundas puramente injetáveis em requisições de sensores engasgados sem base HTML local passiva cruzando-os local subjacentes para nuvem OS matriz testado no marco institucional Avaliador Objetiva Módulo 2 ativado base celular.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

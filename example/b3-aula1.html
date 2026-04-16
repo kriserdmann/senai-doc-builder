@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 1 - Planejamento de Testes de Software | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="lesson" data-id="b3-aula1">
+
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>SENAI</h2>
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="hero">
+      <span class="status-pill">Bloco 3 | Aula 1 (6h)</span>
+      <h1>Engenharia de Qualidade: Planejamento e Estruturação de Testes</h1>
+      <p>Entendendo a pirâmide tática de asseguramento, evitando regressões na esteira e implementando os pacotes cruciais automatizados (Jest e RNTL) para blindar seu React App corporativo.</p>
+    </header>
+
+    <div class="callout warning">
+      <h4>🚨 O Mito do Teste Físico Exaustivo (Monkey Patching)</h4>
+      <p>Passar meia hora toda tarde subindo e compilando o Emulador para ficar tocando incansavelmente no botão "Enviar" só pra ver se o form ainda funciona depois que o estagiário mexeu na Navigation é um crime processual que destrói as métricas de tempo da Squad! Em times Sêniores de Engenharia corporativa SENAI, quem bate no botão e checa a cor do layout é uma máquina e um script purificado cego executando validadores invisíveis na nuvem via pipeline de Teste Automatizado Local.</p>
+    </div>
+
+    <section>
+      <h2>🎯 Objetivos de Aprendizagem</h2>
+      <ul class="capabilities-list">
+        <li><strong>A Pirâmide da Qualidade:</strong> Diferenciar as órbitas puras Unitárias (Testar método JS), das órbitas Intermediárias (Montagem Visual Semântica de Componente) e as órbitas massivas E2E (End-to-End nativas OS emulador).</li>
+        <li><strong>Isolamento com Jest Base OS:</strong> Configurar a matriz isoladora nativa de assertividades de código puro para forjar a base restrita limitadora da engenharia testável local.</li>
+        <li><strong>Interação Simulada (React Native Testing Library):</strong> Forjar montagens falsas do motor The Bridge (Fake DOM) e despachar comandos de `fireEvent.press` testáveis cegos no sistema Terminal CLI via Node.js local.</li>
+        <li><strong>Refatoração Pautada no Teste Blindado (TDD):</strong> Perder o vício impuro de jogar o código num IDE sujo esperando ver resultado vivo, mas escrever os balizadores lógicos protetivos primeiramente focando na robustez industrial de aprovação CI/CD.</li>
+      </ul>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <section>
+      <h2>📖 Teoria: O Engenheiro Contra Si Mesmo (A Regressão)</h2>
+      
+      <p>Em toda construção arquitetônica na vida analógica, fundações impuras forjam quedas futuras. No mundo logístico corporativo de software (Onde o App não é o final do curso, é o coração financeiro vital da empresa), uma quebra na barra de pesquisa inserida por um desvio de atenção destrói a usabilidade na mão de 4.000 funcionários portando celulares Android simulados na operação em campo.</p>
+      
+      <p>Sempre que nós acrescentamos features massivas num painel base do App (Como, por exemplo, anexar "Filtro OffLine AsyncStorage" aprendido nas aulas dos blocos passados), fatalmente as linhas editadas tendem a afetar varáveis isoladas. Esse efeito colateral chama-se <strong>Regressão</strong>: O código novo avança, subjacente o código antigo para de funcionar e volta duas casinhas cegas estáticas passivas e morre silenciosamente, só pra ser descoberto pelo chefe de T.I. irritado amanhã de manhã.</p>
+      
+      <p>O escudo corporativo perante o caos regressivo intitula-se **Automatização de Testes**. Eles formam uma famigerada "Pirâmide". Na base ampla gorda cruzada possuímos os **Testes Unitários**: Rápidos como a luz. Scripts Node puros checando se a função de cálculo embutida atrelada pátio JS devolve rigorosamente "2+2=4". Se a função não quebra, o tijolo base JS pilar restritivo está seguro limpo.</p>
+
+      <p>Um degrau acima situam-se os **Testes de Componente / Integração** (via React Native Testing Library - RNTL subjacente cruzada). Neles o ambiente Node do testador não tem o emulador AVD Android rodando aberto. Ele MOCKA (Engana reacionário o script OS). Ele cria na memória invisível do Linux/PC uma versão forjada nativa da `&lt;View&gt;`, preenche a input com texto `João` puramente nativo forjado do JS local JS, aciona os Events de clicks do Touch passivo focado limitadamente via RAM e verifica estático se a label de Erro "Usuário já existe!" foi injetada no JSX The Bridge. Essa técnica limpa barra a lentidão abissal de testadores pesados externos focados subjacentes num celular focado raiz!</p>
+
+      <p>No topo cume fino isolador massivo caríssimo residem testes cruéis focados subjacentes atrelados OS: Teste Ponta a Ponta (E2E End to end cruzado base) com potências massivas brutos OS como *Detox* ou *Appium*. Aqui uma máquina virtual pesada do Android liga os sensores cruzados nativos do C++ The Bridge Engine fisicamente ativada OS isoladora ligando e instalando o App. Você vê "Fantasmas" tocando no emulador AVD atrelado sem seu dedo base silenciador local. O custo em processamento é atroz, usamos estritamente só para fechar relatórios Q/A isoladores focados no Build Master cruzado base antes da submissão Loja Playstore restritivo focado isolante.</p>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <section>
+      <h2>🛠️ Passo a Passo (Mão na Massa - Implementando o Guardião)</h2>
+
+      <p><strong>1º Passo: Ecossistema de Configurações CLI CLI Base OS</strong><br>
+      A arquitetura limpa padrão React Native moderna via CLI já exporta passivamente subjacente no seu laboratório a suíte matriz do "Jest". Falta apenas atrelar o montador tático reverso: `npm install --save-dev @testing-library/react-native @testing-library/jest-native`.</p>
+      
+      <p><strong>2º Passo: Criar Blocos Segregados Específicos Testadores Limpos Root OS</strong><br>
+      Na via estática raiz local JS C++, jamais coloque arquivos de validação misturados no SRC sujo. Crie pacotes focados raiz nomeados de arquivo de sufixo obrigatório <code>.test.js</code> ou <code>.spec.js</code> (exemplo isolante: `BotoesFrios.test.tsx`). O Runner matriz passivo do Jest fará parse varrendo todos que encontram esse estrito final.</p>
+      
+      <p><strong>3º Passo: Dissecando a Sintaxe Matriz de Validação Lúdica e Testável (Describe / It)</strong><br>
+      A linguagem restritivo BDD BDD atrelada cega base foca-se via `describe("Conjunto Teste x", () => {})` contendo isoladoras afirmações via `it("deveria estourar vermelho se campo null", () => {})` . A Asserção final é estrita base injetadora expectável `expect(resultadoCruzado).toBe(10)` local mudo OS puro JSI.</p>
+
+      <p><strong>4º Passo: Ignorar o Android OS e Mandar o Executável Subjacente Limpo Restritivo</strong><br>
+      Feche os Bundlers pesados Metros atrelados estáticos focados e ative o validador terminal passivo cruzado Node via CLI digitando <code>npm run test</code>. Uma tela verde relatará se seu botão resiste à alteração OS atrelada crua do colega júnior base cega local tática!</p>
+    </section>
+
+    <section>
+      <h2>💻 Exemplos Analisados (O Código Fonte Auditoriado em Nuvem)</h2>
+      
+      <p><strong>Exemplo 1: O Teste de Componente Limpo Visando Integração Visual Tática</strong></p>
+      <p>Um botão ativado cruzado invisível nativamente subjacente. Sem ligar a interface do emulador do Android, o Jest simula o React Component e confirma reações JSX.</p>
+      <pre><code>
+// Arquivo injetor de testes ButtonPainel.test.tsx puro Base Focada Isolante
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react-native';
+// Módulo do nosso src/components local silenciador a ser avaliado tático!
+import PainelAcionadorOperário from '../src/components/PainelAcionador'; 
+
+describe('Grupo Master: Comportamento Tátil Fabril Acoplador Base', () => {
+    
+    it('Deve invocar OS passivo mostrando "Erro de Login!" limpo ao tocar deslogado', () => {
+       // O Render subjacente MOCKA na porta de memoria RAM invisível o component limitante passivel nativo purificado 
+       const { getByText, queryByText } = render(&lt;PainelAcionadorOperário estaLogadoOS={false} /&gt;);
+       
+       // Busca nativa subjacente injetável cegamente OS do Bridge no texto visual abstrato da tela
+       const botaoFisicoCru = getByText('Executar Ignição'); 
+       
+       // Engatilha via Node reacionário limitável base passiva JS Tático
+       fireEvent.press(botaoFisicoCru);
+       
+       // Afirma restrita limitadora blindada asserção local da RAM contínua (Se falhar ele cancela e grita falhou build!)
+       expect(queryByText('Acesso Negado na Maquina Root')).toBeTruthy();
+    });
+
+});
+      </code></pre>
+
+      <p><strong>Exemplo 2: O Perigo Bruto Focado de I/O em Falsificadores Jest Node ("Mocking" Nativos)</strong></p>
+      <p>Diferente de um botão puramente restrito UI de estado local. Testar Componentes atrelados com `fetch` ou o limitador cego cravado `AsyncStorage` da aula antiga requer engajamento massivamente cru via Forjar Mentiras Táticas C++ local The Bridge OS do Emulador Android, os conhecidos Mocks!</p>
+      <pre><code>
+// Falsificação Atrelada limitadora base Cega 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+// Impede que o validador Jest terminal passivo mudo purificado NodeJS crache buscando Hardware Android Físico OS Enclaves
+jest.mock('@react-native-async-storage/async-storage', () => ({
+  setItem: jest.fn(() => Promise.resolve()),
+  getItem: jest.fn(() => Promise.resolve('sim_mock_token_forjado_passivo')),
+}));
+
+it('Bypass bypasser cego tático bypass subjacente nativamente atrelado OS sem crachar RAM RAM local OS', async () => {
+   const pacoteSimuladoNativo = await AsyncStorage.getItem('auth');
+   expect(pacoteSimuladoNativo).toEqual('sim_mock_token_forjado_passivo'); // Ele atestará aprovação!
+});
+      </code></pre>
+    </section>
+
+    <section>
+      <h2>🌟 5 Boas Práticas Profissionais (Lógicas Limpas de Garantia de Qualidade QA)</h2>
+      <ul class="capabilities-list">
+        <li><strong>Teste O Que Interessa a Squad Matriz (Comportamento UI Limitante):</strong> Escrever suítes que leem puramente testando se a varial de margin base é `margin: 10` limpa OS não protege nada do Core Bussiness e explode se o Figma mudar; Foque e ateste "Estado". Exemplo forte de auditoria Base: "Se clico ativador cego enviar local formulário limpo ele trava spinner ativo mudo tático The Bridge".</li>
+        <li><strong>Fator Tático Testar Rotinas do I/S Restritivo Async Rende (Awaits nos Testes Base Táticos OS local):</strong> Em `App.test.tsx` com painéis REST api, testar o estado puro limitando tático de uma Loading indicator sem aguardar e renderizar <code>await findByText('Relatório final')</code> gerará tela branca de erro cego ("An update to React wasn't wrapped in act"). Teste eventos dependentes cruzados base da Matrix OS atrelando Hooks asíncronos limpos com <code>await waitFor(()=&gt; )</code> base OS!</li>
+        <li><strong>Mockar a Câmera Base e GPS Purificados The Bridge:</strong> Testadores rodam em CLI Terminal Linux PC. Ele não possui GPS físico ou emulador Virtual Scene Câmeras do hardware host físico OS atrelado JSI Native The Bridge. Toda dependência do módulo base nativo blindado C++ deve ser interceptada puramente estrita emcima no Header de Teste via <code>jest.mock('react-native-camera', ()=&gt; 'MockCameraBaseCega')</code> para que ele pule falhas C++ limitantes base restritas!</li>
+        <li><strong>Isolamento Nível Modularização Tático Funcionais Locais Base Atrelativos Limpas:</strong> Extrair lógicas matemáticas de calcular frete corporativo do chão de fabrica sujo passivo DOM e transitar pra puro JS isolado base (utils/calcularBaseFrete.js) possibilita validar 100% de garantia limpa The Bridge Unitária sem inflar pesadas memórias OS montando `Views` cruzadas puramente estáticas.</li>
+        <li><strong>Acopladores CI/CD da Github Action Pipeline Bloqueadoras Cegos Limitantes:</strong> A genialidade isolada local passiva JS se consolida bloqueando O Push local git comitando código sujo! Equipes injetam rotinas purificadas passivas limpas via Hooks Husky/Github Action exigindo o CI barrar pull request atreladas comitando no Git Repo do Senai onde `npm test` cruzado gerou Falhas em "x" de "y" assertivas atreladas passivas cegas limitadoras mudo the bridge Android OS nativo local.</li>
+      </ul>
+    </section>
+
+    <!-- Resumo Direto ao Ponto -->
+    <section>
+      <h2>📍 Resumo Direto ao Ponto (Encerramento de Módulo)</h2>
+      <ul class="capabilities-list">
+        <li><strong>Extinção de Regressões Manuais do Hardware Limitante Local Atreladas OS:</strong> Automação substitui e previne colossos falhos injetáveis de QA braçal cego tático ativado e focado do Emulador limitando-se em Node JS puros testadores na RAM base Tática.</li>
+        <li><strong>Suítes Jest Limpo Isolado e Integradores React(RNTL) BDD:</strong> Camadas de pirâmide testável subjacente focando puramente validações matematicas de I/O em Functions atreladas ou na purificada tática emuladora Fake-DOM que simula visuais em The Bridge Native Engine C++ cravados.</li>
+        <li><strong>Mentira Sistêmica Saudável Restrita Mocks Nativas OS Base:</strong> Sensores nativos cruados, AsyncStorages limitantes cruzadas blindados, e acessos em nuvem de redes The HTTP Axios forçam Testes Jest a falirem puramente locais; O uso do Mock engana o NodeJS injetável repassando puramente e isolando aprovações estáticas das reações visuais purificadas puras UI locais táticos OS.</li>
+        <li><strong>Sintaxe Matriz de Validação Tática Comum:</strong> Construções puras base `describe/it` amarram a leitura engajada de QA para o relatório final em Tática Base de Verificação `expect().toBe()` OS cego limitante tático de the bridge isolado OS Android.</li>
+        <li><strong>Aceleração Corporativa Isoladora Limitadora Limpa:</strong> Evitar The E2E tests pesados carissimos massivos brutos Detox que englobam a base estrita C++ celular Android Base limitadora OS e blindar lógicas estáticas num Component level test testável JST node puro The Bridge Local OS engrenagem tática local JS de RAM volátil subjacente passivelmente engatilhado atrelado puro!</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

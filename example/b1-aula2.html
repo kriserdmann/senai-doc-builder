@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 2 - Componentes básicos e Tela de Login | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="lesson" data-id="b1-aula2">
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>SENAI</h2>
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <header class="hero">
+      <span class="status-pill">Bloco 1 | Aula 2 (6h)</span>
+      <h1>Componentes Básicos e Tela de Login</h1>
+      <p>Entendendo a arquitetura de Views textuais, inputs interativos e formulários baseados em estado para construir a principal tela de entrada de dados de um app corporativo.</p>
+    </header>
+
+    <div class="callout warning">
+      <h4>⚠️ Regra de Ambiente: Emulador</h4>
+      <p>Lembre-se: todo código desenvolvido nesta disciplina deve ser executado no **Android Virtual Device (AVD)**. A visualização do teclado nativo cobrindo os botões (teclado virtual do emulador) será essencial para o debug desta aula.</p>
+    </div>
+
+    <!-- Objetivos de aprendizagem -->
+    <section>
+      <h2>🎯 Objetivos de Aprendizagem</h2>
+      <ul class="capabilities-list">
+        <li><strong>Dominar os Componentes Primitivos:</strong> Compreender com profundidade o papel do `View`, `Text`, `TextInput` e `TouchableOpacity`.</li>
+        <li><strong>Gerenciar Estados Locais:</strong> Utilizar a desestruturação do React Hook `useState` para capturar os dados assincronamente da tela (E-mail e Senha).</li>
+        <li><strong>Tratar o Teclado Nativo:</strong> Utilizar `KeyboardAvoidingView` para garantir que o teclado digital da tela não esconda o botão de "Entrar" durante o preenchimento.</li>
+        <li><strong>Validar Dados do Usuário:</strong> Aplicar lógica de sanitização básica impedindo logins vazios ou senhas excessivamente curtas e prover alertas nativos.</li>
+        <li><strong>Construir um Layout Realista:</strong> Agrupar componentes numa hierarquia complexa que simule o formulário rígido do acesso padrão corporativo.</li>
+      </ul>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <!-- Explicação Teórica Completa -->
+    <section>
+      <h2>📖 Teoria: As Peças Geométricas do React Native</h2>
+      
+      <p>Quando abandonamos o ambiente da Web, deixamos de lado as familiares tags HTML (`&lt;div&gt;`, `&lt;span&gt;`, `&lt;button&gt;`). O React Native provê o que chamamos de <strong>Componentes Core (Essenciais)</strong>. Esses componentes não desenham sozinhos a tela, mas eles sinalizam via <em>The Bridge / Fabric</em> qual peça de UI nativa o Android ou iOS devem invocar da sua memória. A base fundacional dessa construção é a <strong>View</strong>.</p>
+      
+      <p>A <code>&lt;View&gt;</code> é o análogo direto à div do HTML, mas conceitualmente mais robusta. No Android, uma `View` se traduz para um <code>android.view.ViewGroup</code>, que é a superclasse base de todo o desenho gráfico do pacote do Google. Ela serve para envolver, estilizar, empilhar hierarquicamente e aplicar lógica de acessibilidade a agrupamentos. Sozinha, ela é invisível num sistema de coordenadas (a menos que apliquemos cor/fundo e altura a ela).</p>
+      
+      <p>Ao contrário da web, no mobile nós somos proibidos de largar um texto bruto solto dentro de um container. Se você inserir "Olá SENAI" dento de uma <code>&lt;View&gt;</code>, nosso motor Metro emitirá um <em>Red Screen of Death (Erro fatal)</em> declarando que os caracteres devem interagir somente mediante à sua estrutura correspondente: o componente <strong>Text</strong>. O componente Text mapeia uma string tipográfica para a classe nativa <code>android.widget.TextView</code>.</p>
+      
+      <p>No desenrolar da criação de uma tela corporativa de Login — requisito zero de qualquer sistema ERP interno — nós necessitamos interagir com a digitação do dedo sujo de graxa do mecânico ou a digitação rápida no pátio de obras. Para o recebimento de teclado, entra o vital <code>&lt;TextInput&gt;</code>. Esse componente não só mapeia para o <code>android.widget.EditText</code>, mas herda propriedades fundamentais de comportamento: qual layout o teclado virtual deve exibir (Mudar de QWERTY genérico para Teclado Numérico ou Teclado de E-mail com arroba fácil). Essa especificidade reduz a fricção e os erros de preenchimento de campo durante o turno operacional.</p>
+      
+      <p>Diferentemente da web que possuí formulários dinâmicos de submissão (tags de <code>&lt;form&gt;</code>), no ecossistema mobile não enviamos a tela inteira. Nós escutamos cada tecla batida em propriedades de evento como <code>onChangeText</code> e salvamos essa tecla em tempo real (estado local ou <em>State</em>). Esse processo é conhecido por formulário controlado, onde a UI (texto digitado visível na caixa) é uma pintura direta da variável gerada pelo componente abstrato (o estado <em>useState</em> carregado na memória RAM do React).</p>
+
+      <p>E quando falamos de botões? O componente <code>&lt;Button&gt;</code> padrão do pacote Core é problemático! O Facebook/Meta (criador do React Native) o desenhou para ser rápido: ele delega o design inteiramente para o Material UI nativo ou para a versão do iOS. Isso significa que ele é impossível de ser estilizado com bordas arredondadas exatas, sombras de gradiente ou fontes exóticas. Para corporações reais, criamos botões customizados empacotando uma camada invisível de toque, chamada <strong>TouchableOpacity</strong> (ou modernas Pressables), envolvendo um container texturizado. Ao ser tocada, o TouchableOpacity responde ao dedo providenciando opacidade visual simulando "aperto" antes de disparar o script.</p>
+
+      <p>A junção primária desses quatro componentes (a *View* agrupando flexbox horizontal, o *Text* guiando os rótulos, o *TextInput* esperando a digitação do teclado virtual, e um *TouchableOpacity* invocando uma API de nuvem e enviando os dados validados) resume mais de 60% da engenharia de front-end nativo em qualquer parte do planeta.</p>
+      
+      <p>Por fim, a principal dor de cabeça em telas mobile baseadas em inserção de dados são os <em>On Screen Keyboards (Teclado em Tela)</em>. Ao clicar em um TextInput no rodapé da página, o teclado digitalizado empurra a tela para cima nativamente sobrepondo de forma "cega" a camada onde os botões estão desenhados pelo JavaScript. Se prever essa variação vertical não for elaborada usando a ferramenta do <code>KeyboardAvoidingView</code> acoplada ou `ScrollView`, o aplicativo parecerá que é de baixíssima procedência comercial, impossibilitando o próprio usuário de clicar em submeter.</p>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <!-- Passo a Passo -->
+    <section>
+      <h2>🛠️ Passo a Passo (Mão na Massa)</h2>
+      
+      <div class="callout info">
+        <h4>Trabalhe Iterativamente</h4>
+        <p>1. Ligue o emulador (A.V.D.).<br>2. Deixe o Metro rodando via <code>npx react-native start</code> ou abra via <code>run-android</code>.<br>3. Salve o arquivo e assista instantaneamente a alteração pintando a tela (Fast Refresh).</p>
+      </div>
+
+      <p><strong>1º Passo: Limportação Essencial</strong><br>
+      Crie uma nova tela em uma pasta recém criada da raiz <code>/src/screens/LoginScreen.tsx</code> e importe os fragmentos fundamentais do React e do construtor nativo.</p>
+      
+      <p><strong>2º Passo: Componente Funcional e Estado</strong><br>
+      Utilize o hook base <code>useState</code> para destinar memória para o futuro e-mail e password.</p>
+      
+      <p><strong>3º Passo: Layout Principal (View)</strong><br>
+      Delinear a View base com fundo sólido corporativo (Senai-blue ou Branco gelo) preenchendo a tela via Flex 1 e alinhamento centrado.</p>
+
+      <p><strong>4º Passo: Formulários (Inputs Individuais)</strong><br>
+      Conecte os inputs de texto aos hooks controláveis, definindo os eventos <code>onChangeText</code> alterando pontualmente o <code>setEmail(text)</code> e o <code>setPassword(text)</code>.</p>
+
+      <p><strong>5º Passo: Customização do Botão Touchable</strong><br>
+      Envolva seu bloco num TouchableOpacity para chamar um validador simulado (que gera o <code>Alert.alert</code> do sistema).</p>
+      
+      <p><strong>6º Passo: Protegendo contra Senha Exposta</strong><br>
+      Ative a diretiva booleana nativa <code>secureTextEntry={true}</code> sobre o input da senha, indicando pro sistema Android que as bolinhas blindadas devem obscurecer as letras durante rastreio de interface (imune a gravadores digitais e cópias da área de transferência).</p>
+    </section>
+
+    <!-- Exemplos Práticos -->
+    <section>
+      <h2>💻 Exemplos Analisados (O Código da Tela)</h2>
+      
+      <p><strong>Exemplo 1: Controlando o Estado de Input</strong></p>
+      <p>O foco em uma Squad é que a subversão da "DOM" seja proibida. React exige "Formulários Controlados", onde state domina o input.</p>
+      <pre><code>
+// Exemplo parcial e focado unicamente no Estado e Input
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+
+const CampoSeguro = () => {
+  // useState() retorna primeiro o VALOR, e em seguida um MÉTODO DE ALTERAÇÃO.
+  const [senha, setSenha] = useState("");
+
+  return (
+    &lt;View style&#61;{styles.container}&gt;
+      &lt;TextInput 
+        style&#61;{styles.input}
+        placeholder="Digite a Senha Corporativa"
+        value={senha} // O campo reflete a memória estrita
+        onChangeText={setSenha} // Ação do teclado atualiza a memória estrita
+        secureTextEntry={true} // Diz ao sistema para colocar * nativo
+      /&gt;
+    &lt;/View&gt;
+  )
+};
+const styles = StyleSheet.create({
+  container: { padding: 20 },
+  input: { borderBottomWidth: 1, borderColor: '#ccc', height: 40}
+});
+      </code></pre>
+      <p><strong>Explicação linha a linha:</strong> Ao usarmos `value={senha}` amarramos a visualização. Ao usarmos o `onChangeText={setSenha}`, instruímos o framework que para CADA tecla individual batida internamente pelo teclado Android, o método invocará a nova renderização inteira do bloco, validando se o asterisco precisa ser montado. `secureTextEntry` não é um hack web de trocar fonte para bolinhas — ele invoca a proteção binária da API de InputMethodManager do próprio Linux do celular Android.</p>
+
+      <p><strong>Exemplo 2: O Código Completo da Tela de Login</strong></p>
+      <p>Criação unificada da funcionalidade abordando alertas e custom button (Botão SENAI).</p>
+      <pre><code>
+import React, { useState } from 'react';
+import { 
+  View, Text, TextInput, TouchableOpacity, 
+  StyleSheet, Alert, KeyboardAvoidingView, Platform 
+} from 'react-native';
+
+const LoginScreen = () => {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  // Lógica desvinculada para proteger o evento sujo na UI.
+  const manipularAcesso = () => {
+    // Validação primitiva sanitizada
+    if (email.trim() === '' || senha.trim() === '') {
+      // Alert chama biblioteca nativa e trava a UI
+      Alert.alert('Erro Inesperado', 'Campos vazios bloqueiam a operação. Preencha!');
+      return; 
+    }
+    
+    if (senha.length < 6) {
+      Alert.alert('Inseguro', 'Senha requer mínimo de 6 caracteres operacionais.');
+      return;
+    }
+    
+    // Simulação do sucesso de Login na Infraestrutura
+    Alert.alert('Sucesso', 'Token gerado! O sistema abriu a API com `'+ email +'`.');
+  };
+
+  return (
+    &lt;KeyboardAvoidingView 
+      style&#61;{styles.geral} 
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    &gt;
+      &lt;View style&#61;{styles.caixaFrontal}&gt;
+        &lt;Text style&#61;{styles.heading}&gt;Área do Empregado&lt;/Text&gt;
+
+        &lt;TextInput 
+          style&#61;{styles.inputCorporativo}
+          placeholder="E-mail (ex: pcp@senai.br)"
+          keyboardType="email-address" // Troca teclado para formato E-MAIL (aparece @)
+          autoCapitalize="none" // E-mail inicial maiúsculo irrita e afeta lógica
+          value={email}
+          onChangeText={setEmail}
+        /&gt;
+
+        &lt;TextInput 
+          style&#61;{styles.inputCorporativo}
+          placeholder="Senha Segura"
+          secureTextEntry // Atalho nativo para true
+          value={senha}
+          onChangeText={setSenha}
+        /&gt;
+
+        &lt;TouchableOpacity style&#61;{styles.botaoPrincipal} onPress={manipularAcesso}&gt;
+          &lt;Text style&#61;{styles.botaoTexto}&gt;AUTENTICAR ACESSO&lt;/Text&gt;
+        &lt;/TouchableOpacity&gt;
+      &lt;/View&gt;
+    &lt;/KeyboardAvoidingView&gt;
+  );
+};
+
+const styles = StyleSheet.create({
+  geral: {
+    flex: 1,
+    backgroundColor: '#f4f7fb',
+    justifyContent: 'center',
+    padding: 24,
+  },
+  caixaFrontal: {
+    backgroundColor: '#ffffff',
+    padding: 32,
+    borderRadius: 8,
+    shadowColor: '#164194',
+    elevation: 3, 
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#0f2c66',
+    textAlign: 'center',
+    marginBottom: 32,
+  },
+  inputCorporativo: {
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+    backgroundColor: '#f8fafc',
+    borderRadius: 6,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    fontSize: 16,
+    marginBottom: 16,
+    color: '#1e293b'
+  },
+  botaoPrincipal: {
+    backgroundColor: '#164194', // A base visual que requeremos no laboratório!
+    paddingVertical: 16,
+    borderRadius: 6,
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  botaoTexto: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    letterSpacing: 1.2, // Espaçamento providencial lido por bibliotecas fontes
+  }
+});
+
+export default LoginScreen;
+      </code></pre>
+
+      <p><strong>Discussões Analíticas da Prática: Por quê e como justificamos essas classes?</strong></p>
+      <p>Na prática completa acima, notem o uso de propriedades de teclado `keyboardType="email-address"`. Um teclado Android regular tentará adivinhar a palavra, não mostrará símbolos e causará frustração se não injetarmos esse atributo. O `autoCapitalize="none"` é essencial: celulares insistem em botar E-mails com letra maiúscula inicial por se tratar de início de frase, e os bancos de dados modernos distinguem caracteres de autenticação. A `KeyboardAvoidingView` evita o problema que citamos lá da barra subir infinitamente de modo que abocanhasse a tela do emulador inteirinha.</p>
+    </section>
+
+    <!-- Boas Práticas -->
+    <section>
+      <h2>🌟 5 Boas Práticas Profissionais (Componentes Base)</h2>
+      <ul class="capabilities-list">
+        <li><strong>Componentização Inteligente:</strong> Ao invés de ficar replicando propriedades de cor em 30 caixas `TextInput` pelo sistema, crie um componente secundário customizado (ex: `&lt;CustomInput&gt;`) que retorne de forma empacotada o padrão corporativo com seu design contido.</li>
+        <li><strong>Blindagem do autoCapitalize:</strong> Sempre defina <code>autoCapitalize="none"</code> e <code>autoCorrect={false}</code> em campos como E-mail, Senhas e Usernames corporativos onde validação em tempo real e de cache é requerida. O corretor destrói o stringing do banco se tentar sugerir em campos vitais.</li>
+        <li><strong>Frequência de Padding, Nunca Hard Coded Height:</strong> Em `View` e `TextInput`, defina alturas usando `paddingVertical` preenchendo as arestas. O uso de `height: 48` restrito fixa botões em telas pequenas (emulador Píxel menor) ou esconde acessibilidade de leitura grande no Android (usuários de idade com fator de fonte 2.0 quebram layout que usou tamanho chumbado fixo).</li>
+        <li><strong>Uso Responsável da Memória no OnChange:</strong> O `onChangeText` não requer passagem de evento anônimo via seta dupla: `onChangeText={(e) =&gt; setSenha(e)}`. A sintaxe `onChangeText={setSenha}` automaticamente repassa e resolve a execução de processador de the Bridge economizando alocação de callback anônimo a cada letra apertada.</li>
+        <li><strong>Teclados Sem Retorno:</strong> Em formulários, utilize as propriedades auxiliares `returnKeyType="next"` junto com `onSubmitEditing` no primeiro campo pra focar o segundo e gerar navegação rápida e sem cliques indesejados.</li>
+      </ul>
+    </section>
+
+    <!-- Erros Comuns -->
+    <section>
+      <h2>🚧 5 Erros Comuns e Frequentes do Ambiente Componentizado</h2>
+      <div class="grid-2">
+        <div class="card">
+          <p><strong>1. Uso de ScrollView Incorreto esmagando Formulários</strong></p>
+          <p>Usuários que colocam ScrollView aninhados esquecem o atributo `contentContainerStyle`. A ScrollView normal amassa um login pra ocupar zero pixels. A regra de flex: 1 precisa do content block específico para expandir.</p>
+        </div>
+        <div class="card">
+          <p><strong>2. Warning de "Encountered two children with the same key" numa View gerada</strong></p>
+          <p>Ao se gerar mapeamentos usando Arrays em React e inserindo tags Text/View, o programador omite prop `key=""`. O Android enlouquece reajustando todas linhas a cada atualização de frame pois carece ID unívoco iterável.</p>
+        </div>
+        <div class="card">
+          <p><strong>3. Sombras ausentes fora de iOS</strong></p>
+          <p>As clássicas props web `shadowRadius`/`shadowColor` NÃO FAZEM efeito gráfico profundo nenhum no nosso A.V.D (Android Emulator). Você é obrigado a usar `elevation: 6` (api proprietária Android preta Material Design) simultaneamente combinada para surgir a sombra no campo.</p>
+        </div>
+        <div class="card">
+          <p><strong>4. Botão esconde debaixo do teclado</strong></p>
+          <p>Mesmo usando <code>KeyboardAvoidingView</code> a tela fica estática. Quase que 100% dos erros é atômico: o Behavior nativo requer "height" explícito em `Platform.OS === 'android'` versus o "padding" da versão web-based. A checagem condicional com `Platform` da API core resolve.</p>
+        </div>
+        <div class="card" style="grid-column: 1 / -1;">
+          <p><strong>5. Uso de "div" por reflexo (Text inside View Sem Wrappers)</strong></p>
+          <p>Diferente do React DOM pra web, você não pode escrever `<View> Olá Mundo </View>`. Essa subversão desprovida do componente primitivo `Text` gera red screen fatal (exceção nativa violenta) relatando "Invariant Violation: Text strings must be rendered within a Text Component". Trata-se da violação do pacote Native Modules UI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exercícios Fixação -->
+    <section>
+      <h2>📝 Lista de Exercícios de Verificação</h2>
+      
+      <div class="callout">
+        <h4>Nível Básico</h4>
+        <p><strong>Exercício 1:</strong> Qual é o equivalente anatômico real e correto da dependência de tag HTML `<form>` num módulo React Native puro de envio e submissão simples?</p>
+        <p><strong>Exercício 2:</strong> Cite por que na esfera do React Native utilizamos botões envoltos nas características de <code>TouchableOpacity</code> ao invés de utilizarmos com exclusividade o utilitário cru <code>&lt;Button&gt;</code> do core do framework quando alinhado aos interesses corporativos de brand/estilo CSS?</p>
+        <p><strong>Exercício 3:</strong> Por meio de qual "Hook" e em qual das áreas operacionais que armazenamos o texto de uma "View de input" (uma senha por exemplo)?</p>
+      </div>
+
+      <div class="callout info">
+        <h4>Nível Intermediário</h4>
+        <p><strong>Exercício 4:</strong> Adicione a funcionalidade do hook e do state e gere um terceiro novo `TextInput` no código copiado (Exemplo Completo). O Componente deve chamar-se `CPF` e deve exigir teclado estritamente numérico, atualizando a via simulada.</p>
+        <p><strong>Exercício 5:</strong> Modifique o botão de login construído no Exemplo 2. Adicione que se os caracteres forem menores que seis, o botão torna-se invisível visualizando (apagado) com baixa opacidade utilizando logica de css array: `style={[styles.botaoBase, senha.length < 6 && styles.botaoDesativado]}` e verifique reações renderizadas.</p>
+        <p><strong>Exercício 6:</strong> Escreva um Alert em cima de sua verificação de campo "vazio" da tela modelo contendo 3 opções variadas de Array Buttons (ex: um botão "ignorar erro" de debug que avança o console mesmo vazio e imprima log, um botão "aceito" e "corrigir"). Utilize Arrays do Alert.alert.</p>
+      </div>
+
+      <div class="callout warning">
+        <h4>Nível Avançado</h4>
+        <p><strong>Exercício 7:</strong> Refatore completamente o componente `CustomInput` construindo um pequeno módulo que englobe uma `View`, englobando um SVG ou texto de ICóNE na aresta da box, preenchendo o resto estritamente em uma estrutura flexbox Row e isolando as propriedades de preenchimento (`placeholder`) do container pai de modo a exportá-la livremente.</p>
+        <p><strong>Exercício 8:</strong> Implemente um sistema de Focus Management avançado nas referências da IDE entre email, senha e confirmaCPF (Ref / useRef). Simule um "Avanço automático de bloco": assim que o campo alcançar os exatos 11 dígitos no hook, ative o método `KeyboardEvent e .focus()` sobre o input vizinho da árvore e justifique seu resultado.</p>
+      </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <!-- Resumo Final -->
+    <section>
+      <h2>📍 Resumo Direto ao Ponto (Encerramento de Módulo)</h2>
+      <ul class="capabilities-list">
+        <li><strong>Renderização Nativa:</strong> Tags como <code>&lt;View&gt;</code> e <code>&lt;Text&gt;</code> interagem diretamente com o hardware.</li>
+        <li><strong>Manipulação Tátil:</strong> Uso de botões específicos e adaptativos nativos na plataforma (Touchables Interfaces).</li>
+        <li><strong>Tratamento de Teclados:</strong> A obrigatoriedade absoluta do <code>KeyboardAvoidingView</code> para que a interface e as páginas não quebrem no mobile.</li>
+        <li><strong>Gerenciamento de Estado:</strong> Controle central puro da aplicação em execução com a base do ecossistema reativo no uso do <code>useState</code>.</li>
+        <li><strong>Sintaxe Segura:</strong> Evitar renderizações de funções injetadas e anônimas nas props para não acarretar penalidade à performance geral sobrecarregando de lixo a máquina local.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

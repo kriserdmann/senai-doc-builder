@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 3 - Layout responsivo com Flexbox | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="lesson" data-id="b1-aula3">
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>SENAI</h2>
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <header class="hero">
+      <span class="status-pill">Bloco 1 | Aula 3 (6h)</span>
+      <h1>Layout responsivo com Flexbox nativo</h1>
+      <p>Entendendo detalhadamente o algoritmo universal de eixos em cruz (Cross/Main Axis) para formatar telas corporativas que não quebram, independente das proporções do smartphone.</p>
+    </header>
+
+    <div class="callout info">
+      <h4>🚨 Aviso do Linter (Comentário da Squad)</h4>
+      <p>Se o seu Visual Studio Code estiver acusando erros de CSS (como <em>css-rcurlyexpected</em>) durante a leitura do código puro das nossas aulas, não se preocupe! Isso é um falso-positivo atômico: a extensão de HTML do editor confunde os blocos de chaves do React Native <code>&#123; &#125;</code> como se fossem estilos CSS mal formatados. A renderização no browser ocorrerá sem qualquer problema, pois as lógicas estão isoladas do motor real em tags de 'code'.</p>
+    </div>
+
+    <!-- Objetivos de aprendizagem -->
+    <section>
+      <h2>🎯 Objetivos de Aprendizagem</h2>
+      <ul class="capabilities-list">
+        <li><strong>Compreender o Eixo Invertido:</strong> Entender matematicamente por que a <code>flexDirection</code> default no React Native é <code>column</code> e não <code>row</code> como na Web e suas implicações.</li>
+        <li><strong>Domínio de Coordenação Flex:</strong> Manejar profundamente as propriedades de <code>justifyContent</code> e <code>alignItems</code> nos diferentes cenários.</li>
+        <li><strong>Uso Responsável da Dimensão Absoluta:</strong> Aprender como o atributo <code>flex: 1</code> devora inteiramente os espaços residuais evitando o uso de pixels engessados.</li>
+        <li><strong>Construir Grids Fluidos:</strong> Aninhar Views horizontais e verticais para criar painéis de KPI do ERP que funcionem em qualquer tamanho de emulador.</li>
+        <li><strong>Depurar Interface no AVD:</strong> Emular visões críticas no Android Virtual Device utilizando o recurso de <em>Toggle Inspector</em>.</li>
+      </ul>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <!-- Explicação Teórica Completa -->
+    <section>
+      <h2>📖 Teoria: A Ciência da Fluidez Dinâmica (Flexbox)</h2>
+      
+      <p>No alvorecer da tecnologia web (da qual muitas de nossas linguagens herdam seu design visual), a construção do layout era um mosaico doloroso de blocos rígidos, quebras em Flutuadores (floats) e gambiarras complexas para simplesmente alinhar algo no meio verticalmente. No entanto, o universo de displays e as diferenças de telas hoje entre um <em>Zebra (Dispositivo industrial)</em>, um <em>Tablet de operador de empilhadeira</em> e o <em>Galaxy Z Flip</em> representam a necessidade não apenas de "adaptação", mas de fluidez geométrica.</p>
+      
+      <p>O <strong>Flexbox (Flexible Box Module)</strong> não foi inventado para o Native Mobile, esteve primeiramente fundamentado na Web. Trata-se de um modelo computacional baseado em <em>Eixos de Orientação</em> que calcula automaticamente a largura residual entre componentes num limite bidimensional e divide esse repouso de espaço num balanço harmonizado. Para o React Native ser uma ferramenta matadora na indústria multiplataforma, ele clonou esse poderoso formato integrando o processador de layout <strong>Yoga Engine</strong>, uma engrenagem que compila as propriedades do estilo FlexBox em coordenadas puras do Android ou iOS.</p>
+      
+      <p>Porém, a grande diferença e choque primário do front-end web adentrando as indústrias mobile é o <strong>paradigma do eixo vertido</strong>. Enquanto sites de navegadores têm a "Linha" (<em>row</em>) como o fluxo padrão empurrando da esquerda para a direita, a orientação em uma aplicação mobile default do Yoga é a "Coluna" (<em>column</em>). Os celulares modernos são telas projetadas verticalmente. Portanto, quando instanciamos 3 blocos vazios, eles caem uns embaixo dos outros na gravidade visual de eixo primário (Main Axis).</p>
+      
+      <p>No coração do Flexbox habitam duas réguas essenciais: <code>justifyContent</code> e <code>alignItems</code>. Imagine o eixo em que a view avança (no celular, de cima para baixo). O <code>justifyContent</code> atua como controlador pontual da distância *norte-sul*. Ajustá-lo para <em>space-between</em> é avisar o compilador: "tome a folga residual (os pixels que não desenharam nada) do Android e empurre eles rigorosamente para os gaps entre as visualizações primárias". Por outro lado, <code>alignItems</code> cruza perpendicularmente; neste mesmo caso (cruzando o oeste-leste), definirá como um texto senta ao lado esquerdo da borda da View ou se está alinhado rigorosamente no centro, sem usar margens duras.</p>
+      
+      <p>Um dos fatores centrais de responsividade e a fundação pro erro zero reside na proporção áurea comumente expressa pelo valor algébrico de <code>flex: 1</code> (ou outros números). Ao contrário da dimensão web `width: 100%`, declarar flex num nó filho ordena que o motor examine todo o quadrante livre do nó pai, dividindo rigorosamente as frações pelo valor do Flex dos filhos somados. Se dois containers possuem <code>flex: 1</code>, cada um consome um naco estrito e incondicional de 50%. Isso blinda nosso aplicativo do famoso problema das quebras das matrizes: onde prever pixels se o Android que seu usuário tem é muito mais esticado (como os de 21:9 proportion)?</p>
+
+      <p>Essa arquitetura dispensa a quebra de <em>media queries</em> (`@media max-width`) da qual desenvolvedores velhos se orgulhavam de escrever para suportar tablet vs phone, num nível de engenharia massivo da meta-squad do React. Ao aninharmos 3 <em>Views</em> em orientações trocadas (Uma coluna carregando internamente três linhas filhas emparelhadas), formamos os mais robustos grids organizacionais imunes totalmente à mudança de orientação retrato/paisagem (Portrait/Landscape).</p>
+      
+      <p>Contudo, o Flexbox exige um domínio tático da sua restrição <code>flexWrap</code> e do temido esmagamento de componentes (shrinking). Há cenários corporativos – como em formulários de inspeção de máquinas no campo – que não queremos flexionar um input num espaço pequeno comprimindo-o até a ilegibilidade. Nessas horas, desligar propositadamente certos flex dos <em>TextInputs</em> e adotar o empacotamento numa ScrollView passa a ser decisão contínua, pois a ferramenta do Flex trabalha em próxmia limitação do espaço real, mas ele jamais invadirá pixels fora do limite invisível sem que um motor de rolagem providencie a permissão.</p>
+
+      <p>O design tido e desenvolvido ao longo das 6 horas desta disciplina focará em um Card Complexo, similar ao encontrado no app do SESI de monitoramento: imagem do empregado horizontal à esquerda, e um pacote empilhado à direita contemplando Nome (Em cima), Cargo (centro) e botão "Monitorar" flexionado na base horizontal. Desbravar o encapsulamento dessas engrenagens provará se a equipe retém ou não a fluência no front-end corporativo de alto nível.</p>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <!-- Passo a Passo -->
+    <section>
+      <h2>🛠️ Passo a Passo (Mão na Massa - Montando Grid)</h2>
+      
+      <div class="callout warning">
+        <h4>Depuração e Pintura: As Bordas Salva-Vidas</h4>
+        <p>Enquanto aprende formatação cruzada, crie OBRIGATORIAMENTE o hábito de dar <code>borderWidth: 1, borderColor: "red"</code> em todos os containers até você entender aonde o layout está indo. O espaço das cores revela instantaneamente se o <em>flex: 1</em> ativou e preencheu o campo da tela do Emulador ou não.</p>
+      </div>
+
+      <p><strong>1º Passo: Flexão da View Main (Segurança Primária)</strong><br>
+      Abra o `App.tsx`, na root view coloque a configuração mais básica para qualquer dispositivo moderno existir na superfície: <em>flex: 1</em> acoplado do topo ao roda-pé.</p>
+      
+      <p><strong>2º Passo: Adicionando Eixos Invertidos</strong><br>
+      Crie uma View interna (`&lt;View style=&#123;styles.cardProfile&#125;&gt;`). Atribua a ela a regra <code>flexDirection: 'row'</code>. Isso avisa: de agora em diante, o eixo primário avança para a direita igual texto escrito, e não de cima para baixo.</p>
+      
+      <p><strong>3º Passo: Divisão dos Fatiadores</strong><br>
+      Dentro da layer Profile criado, monte dois blocos `View`: O da esquerda para "foto ou icone" ocupando <code>flex: 1</code> (e logo, 25% do quadrilátero se formos somar) e a Direita, para todo texto da documentação, pesando <code>flex: 3</code> (ocupando os 75% marginais restantes do repouso).</p>
+
+      <p><strong>4º Passo: O Ajuste da Altura de Borda (Cross-Axis)</strong><br>
+      Neste painel lateral direito recém fundado de Flex 3 (sendo um Flex "submisso"), seu eixo é reinoculado para Coluna! Utilize sobre ele o código <code>justifyContent: 'space-between'</code> e veja maravilhosamente seu Título e os Botões filhos se colarem nos rodapés e topos de seu painel sem necessitar padding bruto.</p>
+
+      <p><strong>5º Passo: Wrap Horizontal</strong><br>
+      Projete numa área secundária da tela inferior uma simulação de botões de navegação, usando <code>flexDirection: 'row'</code> adicionados de <code>flexWrap: 'wrap'</code>. Veja a maravilha celular: se 5 botões não couberem no menor emulador, a tela empurra sozinha perfeitamente a quinta e sexta fileiras para a linha inferior mantendo as margens.</p>
+    </section>
+
+    <!-- Exemplos Práticos -->
+    <section>
+      <h2>💻 Exemplos Analisados (O Código da Tela Responsiva)</h2>
+      
+      <p><strong>Exemplo 1: Alinhamentos Cruzados vs Alinhamento Progressivo</strong></p>
+      <p>A clássica confusão do `justifyContent` e `alignItems` é esclarecida se lembrada a regra de Main/Cross Axes ditada pela direção padrão:</p>
+      <pre><code>
+import React from 'react';
+import { View, StyleSheet, Text } from 'react-native';
+
+const Eixos = () => (
+    &lt;View style&#123;styles.mainContainer}&gt;
+       {/* 
+         Como a default é 'column', o justification caminha no VERTCAL. 
+         Colocaremos "center" para descer as caixas do Ponto Y zero para o meio 
+       */}
+       &lt;View style&#123;styles.caixaVermelha}&gt;&lt;Text&gt;Box 1&lt;/Text&gt;&lt;/View&gt;
+       &lt;View style&#123;styles.caixaAzul}&gt;&lt;Text&gt;Box 2&lt;/Text&gt;&lt;/View&gt;
+    &lt;/View&gt;
+);
+
+const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1, 
+    // Justify avança de norte a sul - As caixas se unem no centro vertical
+    justifyContent: 'center', 
+    // Align cruza de oeste a leste - As caixas vão centralizar horizontalmente
+    alignItems: 'center',
+    backgroundColor: '#1e293b'
+  },
+  caixaVermelha: {
+    width: 100, height: 100, backgroundColor: 'red', margin: 10
+  },
+  caixaAzul: {
+    width: 100, height: 100, backgroundColor: 'blue', margin: 10
+  }
+});
+      </code></pre>
+      <p><strong>Discussão:</strong> Se, por experimento laboratorial, trocarmos o <code>flexDirection: 'row'</code> naquele contêiner pai, subitamente as caixas saltam. O `justifyContent` repentinamente empurrará elas pro meio da tela HORIZONTALMENTE e o `alignItems` se responsabiliza pelo espeto vertical.</p>
+
+      <p><strong>Exemplo 2: O Card ERP Escalonável Completo</strong></p>
+      <p>Uma UI que seria impossível modelar rapidamente com percentuais tradicionais ou divs flutuantes no Mobile.</p>
+      <pre><code>
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+
+const EmpregadoDashboardInfo = () => {
+  return (
+    &lt;View style&#123;styles.paginaGlobal}&gt;
+      &lt;Text style&#123;styles.titulo}&gt;Operador do Campo #44A&lt;/Text&gt;
+
+      &lt;!-- CARD FLEX PARENT --&gt;
+      &lt;View style&#123;styles.cardCorporativo}&gt;
+        
+        &lt;!-- Coluna Direita (Foto - Fator de crescimento 1) --&gt;
+        &lt;View style&#123;styles.fotoPainel}&gt;
+           &lt;Text style&#123;styles.fotoPlaceholder}&gt;👤&lt;/Text&gt;
+        &lt;/View&gt;
+
+        &lt;!-- Coluna Esquerda (Infos - Fator de crescimento 3) --&gt;
+        &lt;View style&#123;styles.infoPainel}&gt;
+            &lt;View&gt;
+              &lt;Text style&#123;styles.nomeOperador}&gt;Carlos A. Silveira&lt;/Text&gt;
+              &lt;Text style&#123;styles.cargo}&gt;Inspetor de Tubulações&lt;/Text&gt;
+            &lt;/View&gt;
+            
+            &lt;!-- A base é forçada num alinhamento inferior com space-between do pai --&gt;
+            &lt;TouchableOpacity style&#123;styles.botaoRastreador}&gt;
+               &lt;Text style&#123;styles.textoBotao}&gt;Rastrear GPS&lt;/Text&gt;
+            &lt;/TouchableOpacity&gt;
+        &lt;/View&gt;
+        
+      &lt;/View&gt;
+    &lt;/View&gt;
+  );
+};
+
+const styles = StyleSheet.create({
+  paginaGlobal: {
+    flex: 1, // Devorando a tela física inteira sem cortes
+    padding: 20,
+    backgroundColor: '#e2e8f0',
+    justifyContent: 'center'
+  },
+  titulo: {
+    fontSize: 22, color: '#0f2c66', fontWeight: 'bold', marginBottom: 16
+  },
+  cardCorporativo: {
+    flexDirection: 'row', // INVERSÃO CRÍTICA (EIXO = LINHA)
+    backgroundColor: '#ffffff',
+    borderRadius: 8,
+    padding: 16,
+    elevation: 4, 
+    // Definimos uma altura fixa ou mínima pro card ter presença?
+    height: 180 
+  },
+  fotoPainel: {
+    flex: 1, // Consumindo exatos 25% da proporção matemática final (1 de 4 totais)
+    backgroundColor: '#164194',
+    borderRadius: 8,
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  fotoPlaceholder: {
+    fontSize: 48 
+  },
+  infoPainel: {
+    flex: 3, // Consome espantosos 75% remanescentes. Reverte eixo passivo pra (column)
+    paddingLeft: 16,
+    justifyContent: 'space-between', // Atira os itens num gap perfeitamente elástico.
+  },
+  nomeOperador: {
+    fontSize: 18, color: '#1e293b', fontWeight: 'bold'
+  },
+  cargo: {
+    fontSize: 14, color: '#64748b'
+  },
+  botaoRastreador: {
+    backgroundColor: '#10b981', // Sucesso color pra chamada de ação ativa
+    padding: 10,
+    borderRadius: 6,
+    alignItems: 'center'
+  },
+  textoBotao: {
+    color: '#ffffff', fontWeight: 'bold'
+  }
+});
+
+export default EmpregadoDashboardInfo;
+      </code></pre>
+      <p><strong>Por que este Layout é infalível?</strong> Se tivéssemos definido <code>width: 100</code> no campo da foto, e rodássemos no menor aparelho disponível do galpão logístico, os 100 pixels devorados matariamm o espaço do Botão e jogariam a formatação do nome para cima e para fora. Usando o arranjo flexionado (<code>flex: 1 vs flex: 3</code>), as divisões renderizam perfeitamente relativas à espessura da tela de que se encostarem. Se vira, o Yoga Engine cuida dos cálculos aritméticos via C++ e distribui as resoluções numéricos.</p>
+    </section>
+
+    <!-- Boas Práticas -->
+    <section>
+      <h2>🌟 5 Boas Práticas Profissionais (Engenharia de Views Flexíveis)</h2>
+      <ul class="capabilities-list">
+        <li><strong>Fuga Completa de Pixels Fixos:</strong> Ao desenhar áreas globais ou contêineres vitais, evite larguras (`width`) ou alturas puras a todo custo; os Flex ratios promovem longevidade contra variações multitelas sem dor de cabeça de manutenções futuras pesadas. Mantenha os pixels só para avatares estritos ou bordas.</li>
+        <li><strong>Evasão de Margins Negativos:</strong> A arquitetura de layouts engavetados com posições absolutas e com propriedades nativas contornadas via margem invertida destróem as árvores interativas (as Touch Areas) nos sistemas Android. A malha do click se perde atrás de Z-index deficiente. Se precisa transitar componente, use <code>transform: [&#123;translateY: -10}]</code> ao invés de margem.</li>
+        <li><strong>Container "Gaps":</strong> Recentemente adotado em versões pós-0.71 do React Native, o atributo global de flexbox chamado <code>gap: 16</code> é superior ao repassamento incansável de <code>margin</code> entre filhos internos da `View`. Centraliza a organização sem poluir as sub-classes dos netos e quebrar o balanço flex dos finais.</li>
+        <li><strong>Otimize View Vazia Desnecessária (React.Fragment):</strong> Desenvolvedores tendem a fechar pares de componentes num Flex Pai fantasma apenas pra agrupá-lo na hora do array-return. Substitua agrupamentos que não contêm lógica de layout por <code>&lt;&gt; &lt;/&gt;</code> para evitar inchaço nativo e perda de velocidade no barramento JVM da memória.</li>
+        <li><strong>Entender a herança deficiente do React Native:</strong> No CSS da Web, você passa `color: blue` do Pai (Body) para repassar pra filhos div herdeiros. O modelo nativo é atômico. Se o pai tem layout flex justificado, ele só posiciona em torno as caixas imediatamente dentro dele; os elementos abaixo das caixas filhos se reposicionam a critério local do flex do próprio filho. Reconfigure cada nova área, passo após a passo.</li>
+      </ul>
+    </section>
+
+    <!-- Erros Comuns -->
+    <section>
+      <h2>🚧 5 Erros Comuns e Frequentes da Malha de Eixos</h2>
+      <div class="grid-2">
+        <div class="card">
+          <p><strong>1. View não aparece (Sumida, Branca, Zero Altura)</strong></p>
+          <p>Esquecer o <code>flex: 1</code> no `container` Master da tela. Em 90% das depurações onde ocorre "a tela ta toda branca vazia mas meu componente de login está nela", a View externa encolheu pra 0 height pois não flexiona a janela-guia do seu próprio corpo contra o celular.</p>
+        </div>
+        <div class="card">
+          <p><strong>2. Esmagamento Textual Transbordado</strong></p>
+          <p>O texto dentro de uma row ultrapassa o canto da tela e não quebra de linha. Um flex row não diz pro filho comprimir. Para corrigir e travar parágrafos longos dentro dele, o filho (`Text`) da extremidade também deve possuir atrativo de `flex: 1` pra forçar e aceitar limitações que o Yoga impõe com um <code>flexWrap: wrap</code> secundário.</p>
+        </div>
+        <div class="card">
+          <p><strong>3. O Uso Errôneo de "Position Absolute" como Fix de emergência</strong></p>
+          <p>Ficar injetando `position: absolute` pra pinar o NavBar inferior ao final do bloco. No App do Google e Apple isso destrói o Android Keyboard. O certo é usar um container com `justifyContent: space-between` de `flex: 1` e deixar ele empurrar organicamente ao fundo sem desconectar os layouts reais de navegação de base.</p>
+        </div>
+        <div class="card">
+          <p><strong>4. Scroll infinito travado (ScrollView flexibilizada demais)</strong></p>
+          <p>Um layout perfeito vira a ScrollView que não recua. Um scroll só age se houver vazamento invisível de tamanho. Acoplar um `flex: 1` generalizado demais nas partes internas do scrollView, sem `contentContainerStyle`, apaga a elasticidade dos conteúdos flutuantes.</p>
+        </div>
+        <div class="card" style="grid-column: 1 / -1;">
+          <p><strong>5. A centralização que fura a hierarquia</strong></p>
+          <p>Tentar `alignItems` sobre a linha X esperando que o componente em Y vá pra metade da linha Z. Compreenda exautivamente a direção corrente antes de justificar. O React emitirá aviso <em>silent warning</em> (não cracheará), e a caixa se prenderá ao left cego eternamente. Desenhe caixas vermelhas visuais.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exercícios Fixação -->
+    <section>
+      <h2>📝 Lista de Exercícios de Verificação</h2>
+      
+      <div class="callout">
+        <h4>Nível Básico</h4>
+        <p><strong>Exercício 1:</strong> Qual o comportamento elementar base e diferente da orientação de arranjo `flexDirection` operado pela Web em contraponto explícito da engine subjacente compiladora que os celulares trazem implementado nas telas React Native?</p>
+        <p><strong>Exercício 2:</strong> Defina o papel exclusivo da diretiva `justifyContent: "space-between"` acoplada quando associada à margem transversal num contexto corporativo de caixas empilhadas numa base limpa e superior.</p>
+        <p><strong>Exercício 3:</strong> Para um componente herdar precisamente 1 terço da dimensão alocada perante a um irmão que devora dois terços, quais propriedades numéricas absolutas de Flex devem ser fornecidas?</p>
+      </div>
+
+      <div class="callout info">
+        <h4>Nível Intermediário</h4>
+        <p><strong>Exercício 4:</strong> Utilizando seu Emulador limpo, recrie a View central da Dashboard apresentada do nosso exemplo 2. Altere o fator do grid de nome/cargo (Coluna direita) para de um peso `flex: 3` passar a dominar pesadamente  `flex: 4` e diminua drásticamente a caixa da foto de 1 para `width` chumbada fixa 80. Valide o encolhimento relacional da foto vs esticamento elástico imune providencial das palavras do painel operário.</p>
+        <p><strong>Exercício 5:</strong> Insira o fator `alignSelf: 'flex-end'` dentro da exclusiva camada de Button `Rastrear GPS` exposta no tutorial para retirar sua característica engessada de linha total e forçar seu acoplamento lateral extremo-direito, quebrando ele para fora da hierarquia comportamental que as propriedades do Pai estão exigindo.</p>
+        <p><strong>Exercício 6:</strong> Escreva uma Navbar fixada inferior no layout global sem utilizar ScrollViews. Englobe 3 Views (flex 1) representando os Botões na rodapé, unidas no flexDirection de Linha. Justifique porquê nenhuma esmaga a outra quando colocadas.</p>
+      </div>
+
+      <div class="callout warning">
+        <h4>Nível Avançado</h4>
+        <p><strong>Exercício 7:</strong> Baseado nas lições de "esmagamento textual transbordado", desenvolva um painel Row. No canto extremo esquerdo instancie imagem ou View vermelha e no canto extremo direito solte todo o parágrafo cego `Lorem Ipsum de 900 palavras` sem atribuir controle de Flexbox ou wrap. Assista a engine travar a quebra. Depois, utilize as ferramentas listadas e o reajuste dinâmico `flexshrink: 1` solucionando o layout imaculado e relatando evidências aos colegas via Pull Request laboratorial.</p>
+        <p><strong>Exercício 8:</strong> Implemente na raiz arquitetônica uma lógica onde o design inteiramente responda através de matrizes em malha 3x3 de ícones Flex `justifyContent: space-evenly`, construindo puramente a tela interativa do desbloqueio em formato senha-desenho visual contendo flex 1 no container flex pai cruzando o enfileiramento row e coluna para matriz precisa milimetricamente nas margens cruzadas absolutas limpas de código manual e reativa perante giros da tela do emulador pro formato "paisagem horizontal".</p>
+      </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: var(--border-color); margin: 32px 0;">
+
+    <!-- Resumo Final -->
+    <section>
+      <h2>📍 Resumo Direto ao Ponto (Encerramento de Módulo)</h2>
+      <ul class="capabilities-list">
+        <li><strong>Yoga Engine e Flexbox:</strong> O algoritmo matemático puro baseado em C++ para organizar Views na tela fluidamente.</li>
+        <li><strong>Eixo Padrão Revertido (Column):</strong> No Mobile a direção nativa principal é estritamente de cima para baixo.</li>
+        <li><strong>Dimensão Proporcional:</strong> O absoluto uso do controle elástico <code>flex: 1</code> no lugar de width e height baseados em pixels engessados.</li>
+        <li><strong>Alinhamento e Estrutura:</strong> Entendimento do preenchimento cruzado com segurança máxima usando <code>justifyContent</code> e <code>alignItems</code>.</li>
+        <li><strong>Tática contra Vazamentos:</strong> Controlar e empurrar contêineres e caixas excedentes no limite da janela acionando propriedades absolutas limitadoras como <code>flexWrap</code> e <code>flexShrink</code>.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
