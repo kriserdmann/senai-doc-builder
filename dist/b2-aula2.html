@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persistência local e cache offline | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="b2-aula2">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>SENAI</h2>
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <span class="status-pill">6h</span>
+      
+      <h1>Persistência local e cache offline</h1>
+      
+      <p>Gerenciando caches duráveis na infraestrutura móvel com AsyncStorage e MMKV, capacitando as frentes industriais a funcionarem sem a dependência contínua de malhas conectivas 4G.</p>
+      
+    </header>
+    <div class="content-body">
+      <div class="callout warning">
+<h4>Não é Banco SQL e nem Relacional Criptográfico</h4>
+<p>O AsyncStorage puro nativo atua exclusivamente pautado em pares de &quot;Chaves-Valores&quot; no formato primitivo de String isoladas brutas. Utilizar este arcabouço para depositar tokens sensíveis ou 25 mil linhas JSON de usuários inteiros trancará seriamente o motor ou será vazado em hard-reset. Para grandes lógicas cruzadas de campos relacionais offline na infra exigem-se bibliotecas avançadas (WatermelonDB / SQlite).</p>
+
+</div>
+<div class="card">
+<h3 class="card-title">🎯 Objetivos de Aprendizagem</h3>
+<ul class="capabilities-list">
+
+<li><strong>Sobrevivência Sem Internet (Offline First):</strong> Adotar arquiteturas que estocam as lógicas processadas e enviam requisições de maneira proteladas assimétricas.</li>
+<li><strong>Implementar a Manteção do Cache Local (AsyncStorage):</strong> Baixar o pacote comutador externo base do ecossistema matriz, setar pares indexados locais brutos na infra sem apagar com atualizações lógicas do App em background.</li>
+<li><strong>Realizar Cópia de Tráfegos do Estado Eficiente:</strong> Gerenciar parsing serializadores de blocos em Objetos via pacote JSON restrito injetando em hooks nativos baseados na recuperação na montagem base do app no Emulador cruzado.</li>
+<li><strong>Orquestrar &quot;Auto-Lembrar&quot; Baseado em Tokens:</strong> Desempenhar fluxo de reentrada tática autêntico: o root app checando invisível a string de persistência se login existia pulando passivamente telas inteiras puras de Stack pro Dashboard Master.</li>
+
+</ul>
+</div>
+<hr>
+<h2>📖 Teoria: O Mito do App Constantemente Online</h2>
+<p>Quando aprendemos a criar projetos na Web, assumimos que se a página carregou, o PC do usuário tem internet. Na fronteira dos aplicativos empresariais móveis, essa presunção rui horrivelmente. Caminhões que trafegam nas estradas rurais, trabalhadores em subsolos forjados de metal pesado onde nenhum sinal via 5G escapa e almoxarifados longínquos padecem do que costumamos chamar &quot;Oscilações Permanentes&quot;.</p>
+<p>As lógicas primárias atreladas a variáveis que os estagiários forjam com extrema paixão nos arquivos App.tsx atrelados no State da visualização evaporam na &quot;Morte Celular&quot; ininterruptas do Kernel e das instâncias recriadas subjacentes brutas. Se seu aparelho fechar por memória ou se o App recarregá do zero os módulos compilados do pacote (Garbage process nativo OS base Android System limits), até o login da sua conta sumirá no vento da RAM volátil nativa processual local de componentes puros isolados restritos ao Front-end em exibição do DOM.</p>
+<p>Buscando superar e resolver essas demandas sem explodir os aplicativos requerendo de cara 100 megabytes de SQL, os desenvolvedores confiam vastamente em estratégias de <strong>Cache Offline Local Storage Nativo</strong>. Historicamente centralizado e acoplado ao core puro do pacote React base, porém hoje extraído e abraçado inteiramente subjacente num repositório mantido assiduamente na comunidade chamado de `@react-native-async-storage/async-storage`. Essa arquitetura permite que scripts simples acessem pastas e arquivos textuais protegidos pelo sistema de Arquivos encriptados da instalação padrão Android App Sandbox, estocando chaves (&quot;IsLogado&quot;) contendo valores (&quot;Sim&quot;).</p>
+<p>Com essa tecnologia as transações fluem nos ciclos: Aquele enorme Fetch REST que aprendemos a forjar no bloco 1 traz o JSON logístico? Então nós primeiramente nós espetamos local usando os comandos táticos Stringificadores em string JSON puro restrito e guardamos num buraco do SO em `setItem(&quot;@listaDePainel&quot;, &quot;[{id: 1}]&quot;)`. Amanhã de manhã, no escuro do subsolo fabril remoto sem WiFi, o componente executa o Effect, enxerga sem conectividade ao catch que a Request da API base quebrou, mas reabre o bloco de lixo persistido usando comando puramente recuperador <code>await AsyncStorage.getItem(&#39;@listaDePainel&#39;)</code> ressuscitando a reidratação (Hydration) inteira em 5ms subjacentes do banco isolador passivo!</p>
+<p>No entanto a adoção deste padrão gera dilemas colossais. A AsyncStorage não detém bloqueios tipados ou limpeza lógica, a engrenagem e a string não tem índices. Se você colocar um laço que a salva no bloco 12 milhões de vezes perante atualizações constantes (como salvar GPS em tempo massivo contínuo do fundo), as threads de barramento atolarão num limite de travamento catastrófico por assincronismo na Bridge engasgado em requisições subjacentes de escrita. Surgiu no alto-fórum corporativo nativo local ecossistema as lógicas concorrentes que o time sênior requer de inovações como biblioteca &quot;MMKV&quot;, utilizando engenharia avançada ligada a memória cruzada do ponteiro do aparelho (Mmap c++) sendo infinitamente limpa, rápida na escrita direta e não assíncrona nas leituras síncronas bloqueáveis de retornos brutais. Iremos neste foco de Fundamentos basearmos nossos fluxos essenciais de Auth e Offlines práticos na clássica robusta padrão persistência e dominar seu ciclo.</p>
+<hr>
+<h2>🛠️ Passo a Passo (Mão na Massa - Montando as Bases Estáticas)</h2>
+<p><strong>1º Passo: Retirar Dependências Oficiais em C++ e Node</strong><br>Localize seu terminal externo bloqueando estritamente todo serviço vivo do &quot;Metro Bundler base&quot;, feche os logs pra acoplar o arquivo ao binário central gerado nativo da arquitetura do pacote e rode via Yarn ou Npm explícito.</p>
+<pre><code>npm install @react-native-async-storage/async-storage
+</code></pre>
+<p><strong>2º Passo: Instalação e Escrita Puritana de Dados Básicos Restritos</strong><br>Importe AsyncStorage na subrotina subjacente JSX (na cabeça do arquivo limpo). Através do Evento de algum toque num painel, gere função atrelando comandos acoplados a blocos async estritamente para cravar valores via <code>setItem</code> na pasta do sistema cega.</p>
+<p><strong>3º Passo: Extração de Objeto via Parsing Lógico Limitado</strong><br>Bancos nativos isolam somente formato STRING puros baseados na API. Ao persistir seus Arrays maciços lógicos, engavete com câmara JSON atrelada <code>JSON.stringify(listaObjeto)</code> e para desfazer esse cofre puxe o valor string extraindo em Javascript via bloco de ordem nativa reacionária em <code>JSON.parse(stringRecusadaLocal)</code>.</p>
+<p><strong>4º Passo: Hidratação Oculta na Visualização Base Inicial</strong><br>Onde a transação ganha relevância é que você, dev da Squad local, fará via hook puramente local `useEffect []` injetável a ordem isolada de ler do cofre assíncrono (um loadData async isolador) sem botão base e popular de pronto seus States com antigas memórias na interface, fingindo pro usuário estar incrivelmente limpo rápido do banco API matriz REST.</p>
+<h2>💻 Exemplos Analisados (O Código Perene da Persistência)</h2>
+<p><strong>Exemplo 1: Escrita Isolada Cruzada de Parâmetros Básicos na Raiz</strong></p>
+<p>Isolamento imperativo no registro das rotinas subjacentes no OS baseadas puramente salvando tema noturno num formulário.</p>
+<pre><code>import React, { useState } from &#39;react&#39;;
+import { View, Switch, Alert, Text } from &#39;react-native&#39;;
+// Módulo empacotador de injeções persistentes puras nativo
+import AsyncStorage from &#39;@react-native-async-storage/async-storage&#39;;
+
+const PainelTemaPersistido = () =&gt; {
+    const [temaEscuroHabilitado, setTemaAtivo] = useState(false);
+
+    const despacharNoOSBaseadoBotao = async (novoStatusVisual) =&gt; {
+        setTemaAtivo(novoStatusVisual);
+        try {
+            // Repare fortemente na sintaxe obrigatória &quot;@chave&quot; e o dado &quot;STRING&quot; limpo isolado 
+            // e nunca booleano primitivo passivo puro (novoStatusVisual seria boolean que quebra o parâmetro injetável limpo C++)
+            await AsyncStorage.setItem(&#39;@chave_cfg_visual_tema&#39;, novoStatusVisual ? &#39;DARK_MODE&#39; : &#39;LIGHT_MODE&#39;);
+            console.log(&quot;Configurações cravadas a fundo no OS.&quot;);
+        } catch(pane) {
+            Alert.alert(&quot;Sistema bloqueado de manter persistência limpa&quot;);
+        }
+    }
+
+    return (
+       &lt;View style={{flex: 1, padding: 50, backgroundColor: temaEscuroHabilitado ? &#39;#111&#39; : &#39;#fff&#39; }}&gt;
+           &lt;Text style={{color: temaEscuroHabilitado ? &#39;#fff&#39; : &#39;#000&#39;}}&gt;Modo Noturno Local&lt;/Text&gt;
+           &lt;Switch value={temaEscuroHabilitado} onValueChange={despacharNoOSBaseadoBotao}/&gt;
+       &lt;/View&gt;
+    )
+};
+</code></pre>
+<p><strong>Exemplo 2: O Carregador Assíncrono com Auto-Login Bypass de Navegação</strong></p>
+<p>Numa complexa operação Root de App base (arquitetado no React Navigation base em Arquivo <code>AuthRoutes</code>), impedimos que a Stack injete Painel de Login e pisamos na tela raiz indo pra Dashboard direto se houver vestígio duradouro nos bancos locais simulando persistências.</p>
+<pre><code>import React, { useState, useEffect } from &#39;react&#39;;
+import { View, ActivityIndicator } from &#39;react-native&#39;;
+import AsyncStorage from &#39;@react-native-async-storage/async-storage&#39;;
+
+const RootRotasEscudoController = () =&gt; {
+  // Flag condicional 3 fases: Buscando na memória Cega? Nao achei? Achei achei limpo?
+  const [validandoSessaoVelha, setValidacaoEmAndamento] = useState(true);
+  const [autenticadoNoToken, setAtreladoAuth] = useState(false);
+
+  useEffect(() =&gt; {
+     // Isola numa função para não forjar Promises cracháveis no callback useEffect principal raiz 
+     const procurarBaixarSessaoNoBancoSilencioso = async () =&gt; {
+        try {
+           const idTokenMortoLocal = await AsyncStorage.getItem(&#39;@sessao_TokenAuthAcesso&#39;);
+           
+           if(idTokenMortoLocal !== null) {
+              // Se há algo cravado ele joga o state positivo contornando barreiras em tela restrita pura
+              setAtreladoAuth(true);
+           }
+        } catch(error) {
+           console.log(&quot;Disco travado injetável limpo&quot;, error);
+        } finally {
+           setValidacaoEmAndamento(false);
+        }
+     };
+
+     procurarBaixarSessaoNoBancoSilencioso();
+  }, []); // Executado em milissegundos limpos após injetar na árvore UI App() Master Global System Base.
+
+  // Fase 1: Emulador e CPU ainda lendo buraco do Android persistido de lentidão pesada
+  if (validandoSessaoVelha) {
+     return &lt;View style={{flex: 1, justifyContent: &quot;center&quot;}}&gt;&lt;ActivityIndicator size=&quot;large&quot; /&gt;&lt;/View&gt;;
+  }
+
+  // Fase 2 e 3: Decisão baseada na memória raiz interceptora injetando painéis complexos já aprendidos na Aula de rotas
+  // return autenticadoNoToken ? &lt;RoutesOperacaoLogadaDasTabs /&gt; : &lt;RoutesStackSomenteAutenticarLogin /&gt;
+};
+</code></pre>
+<div class="card">
+<h3 class="card-title">🌟 5 Boas Práticas Profissionais (Lógicas Persistentes)</h3>
+<ul class="capabilities-list">
+
+<li><strong>Agregação das Constantes de Chave:</strong> Ao invés de o código da Squad de 4 pessoas injetar Strings soltas espalhadas magicamente como `&#39;@sessao1&#39;`, `&#39;@sess_token&#39;` espalhados criando panes de typos e duplicadas nulos isolantes, mantenha arquivos `src/utils/storageKeys.js` que armazenem centralizados <code>export const TOKEN_KEY = &#39;@senai_erp:token;&#39;</code> padronizando limpo.</li>
+<li><strong>Fuga da Lentidão Desastrosa Massiva por Iteração (MultiGet):</strong> Não crie 10 acionamentos independentes sequencias repetitivos de &quot;GetItem(&#39;1&#39;), GetItem(&#39;2&#39;)&quot; trancando thread CPU Bridge celular. Use a ferramenta otimizada em lote `AsyncStorage.multiGet([])` e deite em paralelo todas aquisições num repouso rápido e veloz e destrua carga engasgada base de overhead.</li>
+<li><strong>Tática Híbrida Sync/Async:</strong> A infra nunca confia unicamente na base local isoladora. Implemente um revalidador de token JWT limpo no back! Você acessa, pega token isolado local persistido, vai de Bypass e acessa dashboard offline com array do banco e no useEffect silencioso fundo faz &quot;Fetch(JWT)&quot;. Se erro 401 Expirado voltar do Backend ele executa o Logout Forçado na tela mandando `AsyncStorage.removeItem` jogando pro Login brutal.</li>
+<li><strong>Limitações do SQLite x Async (Sizing):</strong> Para 10 mb nativos AsyncStorage é viável. Se sua arquitetura mobile demandar salvamentos relacionamentos intensos robustos entre &quot;Usuario Pertence a Empresa Pertence a Galpão&quot; (Complex Table Relationships cru), abrace de vez bibliotecas SQL Wrapper como `expo-sqlite` nativa de base e engrenagens como TypeORM em react abandonando a String crua.</li>
+<li><strong>Invalidação Total Roteadora Segura:</strong> Ao produzir botões absolutos &quot;Finalizar Sessão&quot;, deve-se rodar limpezas em batch limpa `AsyncStorage.clear()` ou remover estrita pontuais chaves críticas do funcionário e disparar State de redirecionamento. Não limpe toda `clear()` restritamente se você usa banco local cego para guardar logs crash anônimos vitais paralelos que persistiriam para submissão amanhã desobedecendo limpeza restrita relacional focada em exclusão do Token isolado.</li>
+
+</ul>
+</div>
+<div class="card">
+<h3 class="card-title">📍 Resumo Direto ao Ponto (Encerramento de Módulo)</h3>
+<ul class="capabilities-list">
+
+<li><strong>Engrenagem de Memória Não-Volátil (AsyncStorage):</strong> Ferramenta isolada da raiz do cache volátil que permite gravar e puxar dados persistentes cravados dentro do SO do telefone blindados que sobrevivem à tela morta e restart restrito de energia.</li>
+<li><strong>Formato Crítico Padrão Textual:</strong> Todo bloco injetável gravado será puramente do tipo String base primitiva. Objetos React, Arrays gigantes e booleanos quebram caso não sofram rigoroso encapsulamento restrito por via <code>JSON.stringify</code> e retomadas via <code>JSON.parse</code>.</li>
+<li><strong>Uso Central de Bypass (Sessões):</strong> Lógicas estendidas de acessibilidade primária auto-login (evitar repetir digitações de e-mail ao reabrir programa) habitam vitalmente no check atrelado subjacente invisível no Hook de montagem do construtor de rotas Master cruzado.</li>
+<li><strong>Off-Line First em Operações Invasivas e Isoladas na RAM:</strong> Previne paralisia quando falha da infra em galpão intercepta as promises &quot;catch&quot;, mantendo Arrays gigantes de dados salvos antigos visíveis na UI enquanto as reedições processuais sincronizadas com as frentes externas de nuvem atrasam.</li>
+<li><strong>Limites da Arquitetura Cega Local Associada Relacional:</strong> Persistências de Chave-Valor limitadas tornam engarrafamentos constantes lerdos em buscas; para frentes agressivas pesadas de leitura indexada real corporativa de tabelas restritas, abordamos nos sistemas complexos o nativo SQL Mobile nativo.</li>
+
+</ul>
+</div>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="b2-aula2" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumo de APIs RESTful | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="b2-aula1">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>SENAI</h2>
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <span class="status-pill">6h</span>
+      
+      <h1>Consumo de APIs RESTful</h1>
+      
+      <p>Entendendo como a aplicação corporativa se comunica com o mundo exterior. Requisições HTTP, Promessas de rede e as engrenagens de Fetch vs Axios atreladas ao ciclo de vida das Views.</p>
+      
+    </header>
+    <div class="content-body">
+      <div class="callout warning">
+<h4>Erro Crítico do Localhost no Emulador</h4>
+<p>Seja cuidadoso: quando um desenvolvedor roda uma API local (Node ou Java) na máquina física na porta <code>localhost:3000</code> e o React Native está rodando no Emulador AVD, o <code>localhost</code> do ponto de vista do emulador aponta pro próprio telefone celular simulado, falhando o fetch na hora (&quot;Network Request Failed&quot;). No AVD do Android Studio, a rede da máquina hospedeira deve ser acessada através do IP mágico 10.0.2.2.</p>
+
+</div>
+<div class="card">
+<h3 class="card-title">🎯 Objetivos de Aprendizagem</h3>
+<ul class="capabilities-list">
+
+<li><strong>Arquitetura Cliente-Servidor:</strong> Compreender a base conceitual RESTful de um aplicativo que serve como cliente (front-end puro) desprovido de regras do banco de dados direto.</li>
+<li><strong>Paradigma Assíncrono:</strong> Dominar massivamente a implementação do <code>async/await</code> sobre Promessas JavaScript no fluxo das threads sem travar a interface visual.</li>
+<li><strong>Consumo Operacional via Fetch API:</strong> Efetuar chamadas puras da biblioteca padrão para buscar JSONs da nuvem (GET) e despachar operações simuladas de envio operacional (POST).</li>
+<li><strong>Gerenciamento Estritos de Estado:</strong> Controlar e orquestrar organicamente as fases de &quot;Loading Estancado&quot; (Spinners rotativos) vs &quot;Dados Supridos&quot; atrelados ao componente principal usando `useEffect`.</li>
+<li><strong>Axios Framework:</strong> Instalar a ferramenta de mercado dominante (Axios) para otimizar headers corporativos unificados via Instâncias.</li>
+
+</ul>
+</div>
+<hr>
+<h2>📖 Teoria: A Conexão do Aplicativo com a Matrix (REST)</h2>
+<p>Em projetos estáticos passados e laboratórios acadêmicos arcaicos, aplicações costumavam conter no próprio código os dados forjados. Na engenharia séria de sistemas da indústria 4.0, o Front-end Mobile (Seu aplicativo React Native) jamais, em absoluto, se conecta a um Banco de Dados SQL de maneira raiz e profunda como o PHP se conectava anos atrás. Ele pauta-se pelo design <strong>Cliente-Servidor</strong>. O seu software compilado e baixado pela PlayStore trata-se de uma vitrine operada localmente, oente cega pra regra de negócios pesada; ele apenas despacha e recebe JSON (JavaScript Object Notation) sob as estradas e protocolos estritos do HTTP de servidores rodando microsserviços blindados em datacenters base.</p>
+<p>Essas portas construídas pelas equipes de Back-end com as quais conversamos são as chamadas <strong>APIs (Application Programming Interfaces)</strong> através da convenção arquitetônica RESTful e seus métodos semânticos vitais. Para puxarmos a lista de tarefas da máquina o usamos GET; para criarmos nova falha registrada no banco usamos POST; para atualizarmos submissões pendentes, emite-se um PUT/PATCH, e fuzilamos dados inúteis pela DELETE method. A engenharia reside unicamente em despachar certinho e interpretar cirurgicamente a resposta do pacote de volta em tempo de execução subjacente do celular sem travar tudo.</p>
+<p>Entramos aqui no coração nervoso do Javascript perante I/O (O assincronismo). Se houvesse uma interrupção linear onde o código ordenasse <em>&quot;Buscar todos os 500 caminhões&quot;</em> e aguardasse sincronicamente na thread principal base, a engrenagem e os FPS do React Native e Android iriam paralisar a &quot;Ponte&quot; (The Bridge). A CPU estaria esganada num leep fechado até que as antenas móveis latentes 4G encontrassem as torres. A aplicação cracharia sob a mensagem sistêmica do Android de &#39;App Não Responde&#39; (ANR).</p>
+<p>Para contornar o bloqueio pernicioso, trafegamos em <strong>Promessas (Promises)</strong> e o uso refinado das cláusulas <code>async</code> e <code>await</code> limitadas localmente. Avisamos ao motor: mande o pacote sair em outra thread sistêmica silenciosa, desobstrua a matriz para eu renderizar na tela limpa do usuário uma engrenagem ActivityIndicator rodopiando (Loading) e, subitamente, quando os dados milhas de distâncias chegarem via satélite, a função é ressuscitada para atualizar o State massivo engatilhado (aí entra em campo a base aprendida de Reatividade: <code>setData(...)</code>). Cuidar dessa balança de fases de rede num componente é o ponto que separa quem entra no mercado de quem sofre meses rodando testes em loops que quebram.</p>
+<p>Ecossistemas React puros ofertam nativamente a função global injetada globalmente apelidada de <strong>Fetch API</strong>. Tratasse de uma ferramenta bruta excepcional que provê subsídios estritos que o V8 da web utilizava e exportada pro emulador, necessitando que desenvolvedores formatem puramente `.json()` em dois estágios independentes vitais. Contudo, as &quot;Squads&quot; de alta performance corporativas — inclusive no SENAI e grandes empresas — costumam injetar e acoplar um aliado: a robusta biblioteca externa chamada <strong>Axios</strong>. O Axios corta passos chatos interceptando erros crus, parseando automaticamente sem comandos verbosos Json em Object e gerenciando Headers e tokens JWT numa única &quot;Instância Master&quot; importável.</p>
+<hr>
+<h2>🛠️ Passo a Passo (Mão na Massa - Loading &amp; Fetch)</h2>
+<p><strong>1º Passo: O Preparo do Banco (State Inicial)</strong><br>Toda tela necessita de pelo menos um local volátil que abrigará tanto o flag (interruptor falso/verdadeiro) que informa se a tela ainda aguarda conexão, quanto um State principal pra hospedar as lógicas do JSON da nuvem (Array Base).</p>
+<pre><code>const [dadosOperacionais, setDados] = useState([]);
+const [isCarregando, setCarregando] = useState(true);
+</code></pre>
+<p><strong>2º Passo: Empacotar Isoladamente Função de Controle de I/O Async</strong><br>Proíba terminantemente acionar funções verbosas assíncronas soltas que sujam o ciclo puro limpo principal do JSX; construa com &quot;async&quot; e limite à função para que use blocos <code>try/catch</code> englobando possíveis rupturas e falhas HTTP fatais da rede (modo avião ativado por ex).</p>
+<p><strong>3º Passo: Engatilhar via Hook Fundamental <code>useEffect</code></strong><br>A função assíncrona feita não dispara sozinha ao ar. Se colocada livre ela forjará requisições pra sempre enraizando o loop letal. Agrupe no gancho de escuta do ciclo de montagem de tela injetando na estrutura uma Array Limpa <code>[]</code> para prender o gatilho a ocorrer massiva e exatamente UMA ÚNICA VEZ enquanto o componente exibe ao vivo no Emulador Android.</p>
+<p><strong>4º Passo: Configurar UI do Loading ou de Tela Erro com Layout Base</strong><br>Use condicionais estritos (If&#39;s ou Ternários) e aloque o componente provido gratuitamente do ecossistema local chamado <code>&lt;ActivityIndicator size=&quot;large&quot;/&gt;</code> para girar infinitamente as cornes azuis enquanto nosso código ainda possui a booleana como True na RAM volátil.</p>
+<h2>💻 Exemplos Analisados (O Código Fonte de Dados)</h2>
+<p><strong>Exemplo 1: Dashboard Logística Simples Via Fetch Padrão</strong></p>
+<p>Construindo requisições ao serviço de simulação pública Placeholder para exibir parágrafos dinâmicos renderizados na interface da View iterando o array pelo map():</p>
+<pre><code>import React, { useState, useEffect } from &#39;react&#39;;
+import { View, Text, ActivityIndicator, FlatList, StyleSheet } from &#39;react-native&#39;;
+
+const PainelNoticiasRede = () =&gt; {
+  const [chamados, setChamados] = useState([]); // Inicia vazio sem crachar a UI
+  const [estaBaixando, setBaixando] = useState(true); // Flag para mostrar giratória nativa
+
+  // Função autônoma e protegida em trycatch focado
+  const vasculharOrdemViaHttp = async () =&gt; {
+    try {
+      // Engessando await trancando o processamento assíncrono temporariamente
+      const urlAlvoDaApiREST = &#39;https://jsonplaceholder.typicode.com/posts&#39;;
+      const pacoteHttpBruto = await fetch(urlAlvoDaApiREST); 
+      
+      // Tradução do binário bruto ou blob pro pacote consumível reacionário (Passo exigido do Fetch base)
+      const pacoteOrganizadoJson = await pacoteHttpBruto.json();
+
+      // Despejo direto injetando somente os 5 primeiros limitados
+      setChamados(pacoteOrganizadoJson.slice(0, 5));
+    } catch (falhaDeRedeBruta) {
+      console.warn(&quot;Pane de API: &quot; + falhaDeRedeBruta);
+    } finally {
+      // Independe se explodiu via erro try ou foi sucesso: tire o Spinner cortando flag
+      setBaixando(false);
+    }
+  };
+
+  // Escuta fundamental vital para disparar e rodar o fluxo
+  useEffect(() =&gt; {
+    vasculharOrdemViaHttp();
+  }, []); // Array Vazio = Somente ao Abrir Interface Pela Primeira vez. Fator primordial vital.
+
+  // Fase 1 do Design: UI Provisória (Skeleton base e Loading de tempo vivo celular)
+  if (estaBaixando) {
+    return (
+      &lt;View style={styles.centrado}&gt;
+         &lt;ActivityIndicator size=&quot;large&quot; color=&quot;#164194&quot; /&gt;
+         &lt;Text&gt;Acionando Torres do Back-End...&lt;/Text&gt;
+      &lt;/View&gt;
+    );
+  }
+
+  // Fase 2 do Design: Despejo de Listagem via Engine Dinâmica
+  return (
+    &lt;View style={styles.centrado}&gt;
+       {/* Listando o Array Limpo processado iterativamente usando Map nativo funcional ou Flatlists */}
+       {chamados.map( ordem =&gt; (
+          &lt;View key={ordem.id} style={styles.cardLocal}&gt;
+             &lt;Text style={styles.titulo}&gt;Aviso #{ordem.id}&lt;/Text&gt;
+             &lt;Text numberOfLines={2}&gt;{ordem.title}&lt;/Text&gt;
+          &lt;/View&gt;
+       ))}
+    &lt;/View&gt;
+  )
+}
+
+const styles = StyleSheet.create({
+   centrado: { flex: 1, padding: 20, justifyContent: &#39;center&#39; },
+   cardLocal: { backgroundColor: &#39;#e2e8f0&#39;, padding: 10, marginVertical: 8, borderRadius: 5 },
+   titulo: { fontWeight: &#39;bold&#39;, color: &#39;#0f2c66&#39; }
+});
+
+export default PainelNoticiasRede;
+</code></pre>
+<p><strong>Exemplo 2: Submissão de Formulário com POST Seguro Isolado</strong></p>
+<pre><code>// Retirado da função lógica simulada atrelada a evento interativo Touch de Botão
+const enviarReporteDeErroServidor = async (conteudoDigitado) =&gt; {
+   // O POST carece imperativamente da quebra de Metadados explícitos configurados manualmente no Fetch.
+   const configuracaoHttp = {
+       method: &#39;POST&#39;,
+       headers: {
+           // O Aviso mandatório instruindo o firewall e o parser do BackEnd em NodeJS/Java 
+           &#39;Content-Type&#39;: &#39;application/json&#39;, 
+           // Injeção cega temporal do token. Em aulas futuras vamos esconder isto na persistência AsyncStorage!
+           &#39;Authorization&#39;: &#39;Bearer 0d9a-token-fixo-teste&#39;
+       },
+       // Você não viaja um &quot;Objeto vivo Javascript na memoria RAM&quot;. Serializa impiedosamente em pedaço de json string
+       body: JSON.stringify({
+          setor: &#39;Produção&#39;,
+          mensagemAlerta: conteudoDigitado
+       })
+   };
+
+   // Resposta base.
+   const submissaoResponse = await fetch(&#39;https://minhadomain.com.br/alertas&#39;, configuracaoHttp);
+   if(submissaoResponse.ok) {
+        Alert.alert(&quot;Report enviado com êxito massivo&quot;);
+   }
+}
+</code></pre>
+<div class="card">
+<h3 class="card-title">🌟 5 Boas Práticas Profissionais (Engenharia de Rede e APIs)</h3>
+<ul class="capabilities-list">
+
+<li><strong>Instância Genérica do Axios Subjacente:</strong> Em Squads com múltiplas requisições, nunca digite espalhadamente `fetch(). ` Crie um arquivo basilar <code>src/services/api.js</code> configurando <code>const api = axios.create({baseURL: &#39;http://...&#39;})</code> e utilize a constante limpa repassando lógicas que injetem sozinhos os Tokens, sem reescrever 20 vezes a verbosidade enorme.</li>
+<li><strong>Enclausurar Rotinas HTTP em Catch Block Abortivo:</strong> Todo Request é falho por design devido à natureza imprevisível 4G e Wifi das pessoas base. Tentar engolir variáveis limpas com `.json()` num corpo HTTP bloqueado num Catch resultara em crachê do painel local (&quot;Unhandled Promise Rejection&quot;). Mapeie o TryCatch de ponta a ponta sem falhas cruas.</li>
+<li><strong>Clareza no Spinner Final (The Finally Clause):</strong> Antigamente developers repetiam `setLoading(false)` atrelado na linha limite do try local e replicavam copiando pro Catch em repetições. A norma ES6 atual é usar estritamente o rodapé isolador puro <code>finally { ... }</code> executando limpezas visuais independentemente se ocorreu panico geral de rede ou sucesso da transação.</li>
+<li><strong>Desmontagem Limpa e Memory Leaks React:</strong> Um Bug letal assombra quem navega por Stack: a pessoa puxa o painel de Loading pra buscar, demorou 15s. Ela aborreceu, deu o GoBack local fechando sua tela nativa. Aos 16s a promise fetch finda, e manda um State novo pra view que evaporou (já está despachada pra lixo da Ram). Aviso enorme pisca no IDE pra vazamento da memória e colapso de estado montado de componentes desmontado. Intervenções maduras usam `AbortController()` acoplados pra cancelar Fetch solto na desmontagem bruta.</li>
+<li><strong>Não afogar o FlatList com Arrays Infinitos numa Fetch Única:</strong> Pedir um payload de 3.000 json records trancará e explodirá o Bridge que converte no processamento serializado JSON por limite de MB do C++. Desenvolva uso e acione pagamentos na API (`/posts?page=1&amp;limit=20`) nas estritas solicitações em scrollViews via técnica Paginação infinita.</li>
+
+</ul>
+</div>
+<div class="card">
+<h3 class="card-title">📍 Resumo Direto ao Ponto (Encerramento de Módulo)</h3>
+<ul class="capabilities-list">
+
+<li><strong>Desacoplamento Back e Front Base:</strong> Seu App empilha reatividade visual; ele interage e modifica puramente por APIs em roteadores definidos RESTful alheios do database via HTTP (GET/POST).</li>
+<li><strong>Assincronismo Focado e Blindado:</strong> Congelar a interface usando <code>async/await</code> evita crash de ANR do Android enquanto permite à lógica do script aguardar calmamente na &quot;fila temporária&quot; do processador celular.</li>
+<li><strong>Ciclo Orgânico do Hook Local <code>useEffect</code>:</strong> Controla agressivamente a montagem da primeira requisição com Arrays Vazios limitadores <code>[]</code>. Disparar solto renderizará Fetch para servidor matriz com Loop DDoS infinito, colapsando faturas de AWS no Backend base e derrubando aplicação da loja.</li>
+<li><strong>Avisos Táticos (Spinners):</strong> Todo tráfego precisa ser orquestrado ocultando provisões na UI baseados nas Booleanas até os arrays popularem no State da memória volátil da tela com êxito sem mostrar &quot;Undefined is not map()&quot; local primitivo.</li>
+<li><strong>Rede Cativa e Emuladores:</strong> Relembre infinitamente a limitação do `localhost`; para o React dentro do AVD, use IPs públicos ou 10.0.2.2 ao testar as APIs da Squad levantadas no Node PC interno base subjacente da sala simulado.</li>
+
+</ul>
+</div>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="b2-aula1" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

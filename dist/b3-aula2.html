@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Execução de testes e debugging | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="b3-aula2">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>SENAI</h2>
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <span class="status-pill">6h</span>
+      
+      <h1>Execução de testes e debugging</h1>
+      
+      <p>Entrando no cerne OS Android Logcat e React Devtools para caçar anomalias pesadas que derrubam o aplicativo: Loops Fatais de Re-renders e Memory Leaks Inativos.</p>
+      
+    </header>
+    <div class="content-body">
+      <div class="callout warning">
+<h4>🚨 Cego no Tiroteio: O Limite do Console.log</h4>
+<p>Distribuir dezenas de <code>console.log(&quot;Chegou&quot;)</code> num Componente que executa a 60 FPS na The Bridge causará entupimento do buffer log base, engasgando a passagem e ocultando a anomalia grave OS JSI The Bridge. Profissionais utilizam &quot;Breakpoints&quot; no Debugger V8 Chrome Ativado e o Flamegraph React Tático para rastrear gargalos invisíveis no emulador.</p>
+
+</div>
+<div class="card">
+<h3 class="card-title">🎯 Objetivos de Aprendizagem</h3>
+<ul class="capabilities-list">
+
+<li><strong>Isolar Panes Logcat OS Android:</strong> Descobrir como interceptar crashes nativos The Bridge lendo via terminal o C++ Base Android (Redbox silenciosa).</li>
+<li><strong>Acoplamento Base do Profiler React:</strong> Avaliar gargalos de re-render com DevTools forjando componentes limitantes que travam o emulador JSI.</li>
+<li><strong>Fugar de Leaks Ocultos (Memory Leak JS):</strong> Resolver montadores esquecidos OS e &quot;useEffect&quot; engasgados que colapsam a RAM atrelada base JSI Android.</li>
+<li><strong>Atacar RedBoxes com Maestria:</strong> Aprender a devorar as staktraces do Metro Bundler nativo para corrigir panes visuais limpas e secas cruzadas sem tentativa e erro amadora.</li>
+
+</ul>
+</div>
+<hr>
+<h2>📖 Teoria: O Autopsiador Visual (DevTools e Profiling)</h2>
+<p>Construir UI bela e fluida é o trabalho basilar; no mercado industrial real, as aplicações travam misteriosamente quando listas grandes engasgam o teclado The Bridge e o painel evapora para a área de trabalho celular sem emitir uma linha JSI The Bridge de RedBox.</p>
+<p>Existem os erros de Script (Syntax Errors JS The Bridge que o emulador acusa e trava em vermelho), e existem as <strong>Gargalos de Performance (Re-Renders).</strong> Esses últimos ocorrem se toda letra digitada force o framework recriar The Bridge OS 50 listagens do Database no DOM The Virtual C++ base local, devorando a CPU no Emulator.</p>
+<p>E quando the JS tática &quot;Acha&quot; que tudo ocorreu, mas a biblioteca C++ nativa instalada (ex: sensor OS Camera nativo) falha na permissão estrita e CRASHA o App matando JVM Base Android sem &quot;TryCatch&quot; poder ajudar? Nestes abismos de UI sem trace OS JSI The React, nós largamos o Editor JSI JS Base The Bridge e apontamos nosso Terminal OS cru puramente rodando `adb logcat *` na raça para puxar logs base C++ OS Android puros.</p>
+<h2>💻 Exemplos Analisados (Patologias Ocultas em React Native)</h2>
+<p><strong>Exemplo 1: O Re-Render Ilegal Massivo (Falta de React.memo)</strong></p>
+<pre><code>import React, { useState, memo } from &#39;react&#39;;
+import { View, TextInput, Text } from &#39;react-native&#39;;
+
+// Este child Component re-criar-se-á a CADA caractere digitado acima se não engavetado.
+const GarfoPesadoGrafico = memo(() =&gt; {
+    // console.log(&quot;Renderizou Graph Base C++ The Bridge Local&quot;);
+    return &lt;View&gt;&lt;Text&gt;Analytics JS The Limitador&lt;/Text&gt;&lt;/View&gt;;
+});
+
+const RootDash = () =&gt; {
+    const [busca, setBusca] = useState(&quot;&quot;);
+    return (
+       &lt;View style={{padding: 20}}&gt;
+           &lt;TextInput value={busca} onChangeText={setBusca} /&gt;
+           {/* O uso the &quot;memo&quot; aqui isola ele de sofrer a mutação do PAI! The C++ base respira! */}
+           &lt;GarfoPesadoGrafico /&gt; 
+       &lt;/View&gt;
+    )
+}
+export default RootDash;
+</code></pre>
+<p><strong>Exemplo 2: Evadindo o The Memory Leak com Clear nativos OS JSI</strong></p>
+<pre><code>import React, { useState, useEffect } from &#39;react&#39;;
+import { Text } from &#39;react-native&#39;;
+
+const ListenerMudoLocal = () =&gt; {
+   const [t, setT] = useState(&quot;&quot;);
+
+   useEffect(() =&gt; {
+      // Disparado na The Bridge C++ OS 
+      const relogio = setTimeout(() =&gt; {
+          // Se o usuario der Back e fechar tela local base the OS Cego JSI antes dos 10 seg..
+          // The JSI Pura setará estado THE STATE numa OS View the Morta! ERRO FATAL OS!
+          setT(&quot;Acionou Limite OS!&quot;); 
+      }, 10000); 
+
+      // Função de Cleanup Matadora Nativa The Effect isolador
+      return () =&gt; clearTimeout(relogio);
+   }, []);
+
+   return &lt;Text&gt;{t}&lt;/Text&gt;
+};
+export default ListenerMudoLocal;
+</code></pre>
+<div class="card">
+<h3 class="card-title">📍 Resumo Direto ao Ponto (Encerramento de Módulo)</h3>
+<ul class="capabilities-list">
+
+<li><strong>RedBoxes vs crashes base JVM:</strong> Erros JSX viram telas vermelhas instrutivas, erros C++ Nativo OS fecham the app cego; ataque a segunda base rodando the `npx react-native log-android` the log.</li>
+<li><strong>Profiler Flamegraph:</strong> A aba cravada V8 Chrome rastreia tempo JSI The rendering OS cego, essencial para ver que botões engasgaram por conta purificada array gigante renderizando a C++ JSI OS local.</li>
+<li><strong>Prevenção Extrema Purificada OS The Tático Vazamento The RAM:</strong> Os Memory Leaks base JSI Base Ocultas destroem Apps após the hours Limpas focadas; ocorrem quando OS Promises ativadas C++ OS atreladas e callbacks respondem após component evaporar, exigindo Oculta The Garbage limitante `unmount returns`.</li>
+<li><strong>Memoization e JSI Limpo (useMemo e useCallback):</strong> Engavetar funçoes passivas atreladas cegas the limitantes cravadas foca JS puro e barra o &quot;Re-render&quot; atroz The The Children of the JSI limitador Oculto OS the C++ Root Base.</li>
+<li><strong>Cuidado Absoluto com Loggers Release Android OS:</strong> Limpe os seus rastreios passivos OS consolados log tático purificada The Base JSI OS JSI Limpo ativado no empacotamento tático release loja para proteger a bateria OS Atrelada C++ the RAM OS Pura Android!</li>
+
+</ul>
+</div>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="b3-aula2" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
