@@ -133,13 +133,6 @@ const syllabus = [
     "sortKey": "03.08"
   },
   {
-    "id": "analise-e-modelagem-de-sistemas",
-    "title": "Análise e Modelagem de Sistemas",
-    "block": "Aulas",
-    "duration": "",
-    "sortKey": "Análise e Modelagem de Sistemas"
-  },
-  {
     "id": "atividade-pratica-modulo-1",
     "title": "Atividade Prática: Módulo 1",
     "block": "Aulas",

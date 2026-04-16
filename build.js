@@ -191,11 +191,19 @@ async function build() {
 
     if (isNotionExport) {
       const cleanName = stripNotionUUID(fileName);
-      // Extract title from first H1 in the file
-      const h1Match = fileContent.match(/^#\s+(.+)$/m);
-      title = h1Match ? h1Match[1].trim() : cleanName;
       block = extractBlockFromName(cleanName);
       baseName = slugify(cleanName);
+    }
+
+    // Strip the FIRST H1 across all pages so it only appears in the Hero block
+    const h1Match = markdownContent.match(/^(?:#\s+)(.+)$/m);
+    if (h1Match) {
+      if (!title || isNotionExport) {
+        title = h1Match[1].trim();
+      }
+      markdownContent = markdownContent.replace(h1Match[0], '').replace(/^\s+/, '');
+    } else if (isNotionExport && !title) {
+       title = stripNotionUUID(fileName);
     }
 
     // --- Copy Notion image subfolders to dist/images ---

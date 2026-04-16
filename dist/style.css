@@ -65,6 +65,13 @@ body {
   gap: 12px;
 }
 
+.sidebar-logo {
+  max-width: 160px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .sidebar-header h2::before {
   content: '';
   display: inline-block;
