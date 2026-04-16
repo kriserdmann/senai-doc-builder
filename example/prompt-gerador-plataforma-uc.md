@@ -123,16 +123,13 @@ Cada módulo DEVE conter na view HTML as seguintes tags semânticas e ordem:
 Abaixo estão os dados reais do projeto atual que você deve absorver para a aplicação MPA:
 
 *   **Nome da UC:** [NOME DA UC AQUI - Ex: Análise de Dados]
-*   **Carga Horária / Semestre:** [Ex: 60h | 2026/2]
+*   **Carga Horária:** [Ex: 60h]
 
-*   **Capacidades Técnicas Formativas:**
+*   **Capacidades Técnicas:**
 [COLE A LISTA DE CAPACIDADES DA EMENTA AQUI]
 
 *   **Conhecimentos:**
 [COLE A ESTRUTURA DE CONHECIMENTOS OFICIAIS AQUI]
 
-*   **Aulas:**
-    [Cole aqui as descrições curtas da Aula 1, Aula 2 etc]
-    *(Exemplo)*: Aula 1 (6h) - BLOCO 1 - Estratégias: ... Prática: ...
 
 Por favor, entenda essas instruções e proceda com a separação de todos os arquivos.
