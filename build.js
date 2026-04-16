@@ -162,6 +162,7 @@ async function build() {
   const allMdFiles = await collectMdFiles(contentDir, contentDir);
   
   let syllabus = [];
+  let allAttachments = [];
   let generatedCount = 0;
 
   for (const { filePath, relDir } of allMdFiles) {
@@ -206,6 +207,15 @@ async function build() {
        title = stripNotionUUID(fileName);
     }
 
+    // --- Extract PDFs ---
+    let pageAttachments = [];
+    markdownContent = markdownContent.replace(/\[([^\]]+)\]\((.*?\.pdf)\)/gi, (match, text, url) => {
+      const decodedUrl = decodeURIComponent(url);
+      const filename = path.basename(decodedUrl);
+      pageAttachments.push({ text, filename });
+      return ''; // Remove link from standard textual flow
+    });
+
     // --- Copy Notion image subfolders to dist/images ---
     // In Notion exports, images live in a subfolder named after the page (without UUID)
     const cleanPageName = stripNotionUUID(fileName);
@@ -232,6 +242,19 @@ async function build() {
     let htmlContent = marked.parse(markdownContent);
     htmlContent = processMarkdownHTML(htmlContent);
 
+    if (pageAttachments.length > 0) {
+      let attachesHtml = `\n<div class="card" style="margin-top: 2rem;">\n<h3 class="card-title">📎 Anexos</h3>\n<ul class="capabilities-list">\n`;
+      pageAttachments.forEach(att => {
+        const url = `images/${att.filename}`;
+        attachesHtml += `<li><a href="${url}" target="_blank" style="text-decoration:none; color:inherit;"><strong>${att.text}</strong> (PDF Document)</a></li>\n`;
+        if (!allAttachments.find(a => a.url === url)) {
+           allAttachments.push({ text: att.text, url });
+        }
+      });
+      attachesHtml += `</ul>\n</div>\n`;
+      htmlContent += attachesHtml;
+    }
+
     const isIndex = baseName === 'index';
     const template = isIndex ? indexTemplate : layoutTemplate;
     const finalHtml = processTemplate(template, { id: baseName, title, duration, description, content: htmlContent });
@@ -247,7 +270,7 @@ async function build() {
   // Sort syllabus by sortKey for correct sidebar order
   syllabus.sort((a, b) => a.sortKey.localeCompare(b.sortKey));
 
-  const dataJsContent = `const syllabus = ${JSON.stringify(syllabus, null, 2)};`;
+  const dataJsContent = `const syllabus = ${JSON.stringify(syllabus, null, 2)};\nconst attachments = ${JSON.stringify(allAttachments, null, 2)};`;
   await fs.ensureDir(path.join(distDir, 'js'));
   await fs.writeFile(path.join(distDir, 'js', 'data.js'), dataJsContent);
 

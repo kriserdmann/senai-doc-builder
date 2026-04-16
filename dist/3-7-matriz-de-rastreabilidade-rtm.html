@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.7: Matriz de Rastreabilidade (RTM) | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="3-7-matriz-de-rastreabilidade-rtm">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>3.7: Matriz de Rastreabilidade (RTM)</h1>
+      
+    </header>
+    <div class="content-body">
+      <h3>Introdução. O Elo Perdido da Engenharia</h3>
+<p>É comum que, em projetos longos, a equipe se pergunte: &quot;Por que estamos desenvolvendo esta funcionalidade?&quot; ou &quot;Se eu mudar esta regra de cálculo, o que mais no sistema vai quebrar?&quot;. A Matriz de Rastreabilidade responde a essas perguntas.</p>
+<p>A rastreabilidade é a capacidade de descrever e seguir a vida de um requisito em ambas as direções (origem e destino). Ela é um componente essencial da gerência de configuração e garantia de qualidade.</p>
+<hr>
+<h3>1. Tipos de Rastreabilidade</h3>
+<p>Para um controle total, o analista deve considerar três dimensões de rastreio:</p>
+<p><strong>Rastreabilidade para Trás (Backward-from).</strong></p>
+<p>Conecta o requisito à sua origem. Pode ser uma ata de reunião, um e-mail do cliente, uma legislação ou uma observação de campo.</p>
+<p><strong>Pergunta:</strong> &quot;Quem pediu isso e onde está registrado?&quot;</p>
+<p><strong>Rastreabilidade para Frente (Forward-to).</strong></p>
+<p>Conecta o requisito aos seus subprodutos. Isso inclui diagramas UML, protótipos, módulos de código e casos de teste.</p>
+<p><strong>Pergunta:</strong> &quot;Este requisito já foi modelado, codificado e testado?&quot;</p>
+<p><strong>Rastreabilidade Horizontal.</strong></p>
+<p>Conecta requisitos relacionados entre si. Por exemplo, um Requisito Funcional que depende de um Requisito Não Funcional de segurança.</p>
+<hr>
+<h3>2. Anatomia de uma Matriz (RTM) no Notion</h3>
+<p>No Notion, a RTM não deve ser apenas um texto, mas uma Base de Dados Relacional. Cada linha representa um requisito e as colunas mostram suas conexões.</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requisito</th>
+<th>Origem (Stakeholder/Doc)</th>
+<th>Caso de Uso (UML)</th>
+<th>Código/Módulo</th>
+<th>Caso de Teste</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>RF01</td>
+<td>Realizar Saque</td>
+<td>Ata Reunião #04</td>
+<td>UC08 - Saque</td>
+<td>finance/withdraw.js</td>
+<td>CT-01, CT-02</td>
+<td>Validado</td>
+</tr>
+<tr>
+<td>RF02</td>
+<td>Consultar Saldo</td>
+<td>E-mail Diretor (12/03)</td>
+<td>UC09 - Saldo</td>
+<td>finance/balance.js</td>
+<td>CT-05</td>
+<td>Em Dev</td>
+</tr>
+<tr>
+<td>RNF01</td>
+<td>Criptografia SSL</td>
+<td>Política Seg. Empresa</td>
+<td>N/A (Arquitetura)</td>
+<td>config/security.py</td>
+<td>CT-10</td>
+<td>Aprovado</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>3. A Importância da Análise de Impacto</h3>
+<p>A RTM é a ferramenta principal para realizar a Análise de Impacto. Quando o cliente solicita uma mudança, o analista não diz &quot;sim&quot; ou &quot;não&quot; imediatamente. Ele consulta a matriz:</p>
+<ul>
+<li><strong>Identifica o Requisito.</strong> O cliente quer mudar a regra de juros (RN05).</li>
+<li><strong>Rastreia as Conexões.</strong> A matriz mostra que a RN05 afeta o RF08 (Cálculo de Parcela), a UC12 (Diagrama de Sequência) e os Testes CT-20 a CT-25.</li>
+<li><strong>Mede o Esforço.</strong> Com base nessas conexões, o analista informa: &quot;Essa mudança afetará 1 diagrama, 2 módulos de código e exigirá refazer 5 testes. O impacto no cronograma é de 3 dias.&quot;</li>
+</ul>
+<hr>
+<div class="card">
+<h3 class="card-title">4. Benefícios Práticos para o Projeto</h3>
+<ul class="capabilities-list">
+
+<li><strong>Evita o &quot;Gold Plating&quot;.</strong> Impede que desenvolvedores criem funcionalidades que não foram solicitadas (se não está na matriz, não deve ser codificado).</li>
+<li><strong>Garante a Cobertura de Testes.</strong> Se um requisito na matriz não tem um &quot;Caso de Teste&quot; associado, o sistema corre o risco de ser entregue com falhas.</li>
+<li><strong>Facilita Auditorias.</strong> Em sistemas críticos (saúde, financeiro), a RTM prova que todos os requisitos legais foram implementados.</li>
+
+</ul>
+</div>
+<hr>
+<div class="card">
+<h3 class="card-title">📝 Resumo de Validação</h3>
+<ul class="capabilities-list">
+
+<li><input disabled="" type="checkbox"> Todo requisito tem uma origem clara?</li>
+<li><input disabled="" type="checkbox"> Todo requisito está vinculado a pelo menos um caso de teste?</li>
+<li><input disabled="" type="checkbox"> Existe um responsável técnico para cada item da matriz?</li>
+
+</ul>
+</div>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="3-7-matriz-de-rastreabilidade-rtm" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4: Matriz de Responsabilidades (RACI) | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="1-4-matriz-de-responsabilidades-raci">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>1.4: Matriz de Responsabilidades (RACI)</h1>
+      
+    </header>
+    <div class="content-body">
+      <h2>Introdução: O Fim do &quot;Achei que Fulano ia Fazer&quot;</h2>
+<p>Em projetos complexos, a falha mais comum não é a falta de habilidade técnica, mas a falta de clareza sobre quem deve tomar uma decisão ou executar uma tarefa. A Matriz RACI (também conhecida como Matriz de Atribuição de Responsabilidades) é uma ferramenta que mapeia os papéis do projeto em relação às atividades do ciclo de vida do software.</p>
+<hr>
+<h2>1. A Anatomia do RACI</h2>
+<p>A sigla representa os quatro níveis de envolvimento que um profissional pode ter em uma atividade:</p>
+<p><figure class="image-wrapper">
+<img src="1%204%20Matriz%20de%20Responsabilidades%20(RACI)/PT-RACI-2.jpg" alt="PT-RACI-2.jpg">
+<figcaption>PT-RACI-2.jpg</figcaption>
+</figure></p>
+<ul>
+<li><strong>R - Responsible (Responsável):</strong>
+É quem efetivamente &quot;mão na massa&quot;. É a pessoa (ou equipe) que executa a tarefa para que ela seja concluída.</li>
+<li><strong>A - Accountable (Autoridade/Dono):</strong>
+É quem responde pelo sucesso ou fracasso da tarefa. Regra de Ouro: Só pode haver um &quot;A&quot; por atividade. Se houver dois, ninguém é dono da decisão final.</li>
+<li><strong>C - Consulted (Consultado):</strong>
+São os especialistas que fornecem informações para a tarefa. A comunicação é de duas vias (o responsável pergunta e o consultado responde).</li>
+<li><strong>I - Informed (Informado):</strong>
+São as pessoas que precisam saber que a tarefa foi concluída ou que uma decisão foi tomada, mas não precisam opinar. A comunicação é de uma via (apenas notificação).</li>
+</ul>
+<h3>Exemplo:</h3>
+<p><figure class="image-wrapper">
+<img src="1%204%20Matriz%20de%20Responsabilidades%20(RACI)/MATRIZ_RACI-1024x602.jpg" alt="MATRIZ_RACI-1024x602.jpg">
+<figcaption>MATRIZ_RACI-1024x602.jpg</figcaption>
+</figure></p>
+<hr>
+<h2>2. Aplicabilidade no Ciclo de Vida de Software</h2>
+<p>Ao cruzar as 7 fases do ciclo de vida com os papéis do time, o analista cria um mapa de navegação para o projeto:</p>
+<table>
+<thead>
+<tr>
+<th>Atividade / Fase</th>
+<th>Analista de Sistemas</th>
+<th>Desenvolvedor</th>
+<th>Stakeholder (Cliente)</th>
+<th>QA (Tester)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Elicitação de Requisitos</td>
+<td>A / R</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Definição de Arquitetura</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Modelagem de Banco de Dados</td>
+<td>A / R</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Codificação de Funcionalidade</td>
+<td>C</td>
+<td>A / R</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Testes de Integração</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>A / R</td>
+</tr>
+<tr>
+<td>Homologação (Aceite)</td>
+<td>C</td>
+<td>I</td>
+<td>A / R</td>
+<td>C</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>3. Regras para uma Matriz Saudável</h2>
+<p>Um analista de sistemas utiliza a matriz para identificar &quot;gargalos&quot; no projeto:</p>
+<ul>
+<li>Muitos &quot;R&quot; para uma pessoa: Sobrecarga. Esta pessoa será o gargalo do projeto.</li>
+<li>Nenhum &quot;R&quot; em uma tarefa: A tarefa nunca será concluída, pois não há executor.</li>
+<li>Muitos &quot;C&quot;: Excesso de reuniões e consultas. O projeto ficará lento pela necessidade de ouvir muitas pessoas.</li>
+<li>Falta de &quot;A&quot;: Ninguém toma a decisão final. O projeto fica &quot;andando em círculos&quot;.</li>
+</ul>
+<hr>
+<p><em>📚 Este material foi criado por <strong>Kristian Erdmann</strong> e compõe a base técnica da <strong>Unidade Curricular de Análise e Modelagem de Sistemas.</strong></em></p>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="1-4-matriz-de-responsabilidades-raci" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

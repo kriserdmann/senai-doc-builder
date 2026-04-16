@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4: Técnica de Elicitação — Questionário | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="2-4-tecnica-de-elicitacao---questionario">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>2.4: Técnica de Elicitação — Questionário</h1>
+      
+    </header>
+    <div class="content-body">
+      <h3>Introdução: Escalabilidade na Descoberta</h3>
+<p>O questionário (ou survey) é uma técnica de elicitação quantitativa e qualitativa que permite coletar informações de dezenas, centenas ou até milhares de pessoas simultaneamente. Na Engenharia de Requisitos, ele é frequentemente utilizado para validar se uma percepção colhida em uma entrevista individual é compartilhada pelo restante da organização.</p>
+<p><figure class="image-wrapper">
+<img src="images/questionrio.jpg" alt="questionário.jpg">
+<figcaption>questionário.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>1. Quando utilizar o Questionário?</h3>
+<p>O questionário deve ser aplicado em cenários específicos:</p>
+<ul>
+<li><strong>Stakeholders Dispersos:</strong> Quando os usuários estão em diferentes filiais ou cidades.</li>
+<li><strong>Validação Estatística:</strong> Quando você precisa de números para justificar uma decisão (ex: &quot;85% dos usuários consideram a função de busca ineficiente&quot;).</li>
+<li><strong>Anonimato Necessário:</strong> Em situações onde os usuários podem se sentir intimidados em criticar processos atuais pessoalmente.</li>
+<li><strong>Levantamento de Perfil:</strong> Para entender o nível de alfabetização digital do público que usará o sistema.</li>
+</ul>
+<hr>
+<h3>2. Estrutura das Perguntas</h3>
+<p>Um questionário eficaz equilibra dois tipos de perguntas para obter dados precisos:</p>
+<h3>A. Perguntas Fechadas (Quantitativas)</h3>
+<p>Oferecem opções pré-determinadas de resposta.</p>
+<ul>
+<li><strong>Múltipla Escolha:</strong> &quot;Qual funcionalidade você usa mais?&quot;</li>
+<li><strong>Escala de Likert:</strong> &quot;De 1 a 5, quão satisfeito você está com a velocidade do sistema atual?&quot;</li>
+</ul>
+<p><strong>Vantagem:</strong> Fáceis de tabular e geram gráficos claros.</p>
+<hr>
+<h3>B. Perguntas Abertas (Qualitativas)</h3>
+<p>Permitem que o respondente escreva livremente.</p>
+<ul>
+<li><strong>Exemplo:</strong> &quot;Descreva um problema frequente que você enfrenta no processo de faturamento.&quot;</li>
+</ul>
+<p><strong>Vantagem:</strong> Revelam problemas que o analista não previu.</p>
+<p><strong>Desvantagem:</strong> Difíceis de analisar em larga escala (exigem leitura manual).</p>
+<hr>
+<h3>3. O Design do Questionário</h3>
+<p>Um questionário mal projetado gera dados inúteis (Garbage In, Garbage Out). Siga este roteiro técnico de construção:</p>
+<ul>
+<li><strong>Objetivo Claro:</strong> Defina exatamente o que você quer descobrir. Não faça perguntas &quot;por curiosidade&quot;.</li>
+<li><strong>Instruções Precisas:</strong> Explique o propósito da pesquisa e garanta o anonimato (se for o caso).</li>
+<li><strong>Fluxo Lógico:</strong> Comece com perguntas simples e demográficas (nome, cargo, setor) e avance para as questões técnicas de negócio.</li>
+<li><strong>Vocabulário Adequado:</strong> Evite termos técnicos da TI (como &quot;API&quot;, &quot;Backend&quot;, &quot;Deploy&quot;) se os respondentes forem da área administrativa ou operacional.</li>
+<li><strong>Teste Piloto:</strong> Antes de enviar para 500 pessoas, envie para 2 ou 3 colegas para verificar se as perguntas estão claras e sem ambiguidades.</li>
+</ul>
+<hr>
+<h3>4. Vantagens e Limitações</h3>
+<table>
+<thead>
+<tr>
+<th>Vantagem</th>
+<th>Limitação</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Baixo Custo: Uma vez criado, o custo de envio para 1 ou 1.000 pessoas é o mesmo.</td>
+<td>Falta de Aprofundamento: Não é possível perguntar &quot;por que&quot; após uma resposta interessante.</td>
+</tr>
+<tr>
+<td>Conveniência: O usuário responde quando tiver tempo.</td>
+<td>Baixa Taxa de Resposta: Muitos usuários ignoram o convite ou respondem sem atenção.</td>
+</tr>
+<tr>
+<td>Padronização: Todos recebem exatamente a mesma pergunta, sem viés de entonação do analista.</td>
+<td>Inflexibilidade: Se o usuário não entender a pergunta, ele responderá de qualquer jeito ou deixará em branco.</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>5. Análise de Resultados</h3>
+<p>O trabalho do analista de sistemas após o questionário é a triangulação de dados:</p>
+<ul>
+<li>Transforme as respostas fechadas em requisitos de desempenho ou funcionalidade.</li>
+<li>Agrupe as respostas abertas por &quot;temas&quot; ou &quot;dores comuns&quot;.</li>
+<li>Utilize os resultados para pautar a próxima rodada de entrevistas (agora muito mais focada nos problemas reais detectados).</li>
+</ul>
+<hr>
+<div class="card">
+<h3 class="card-title">⚠️ Boas Práticas Técnicas</h3>
+<ul class="capabilities-list">
+
+<li>Evite perguntas duplas: &quot;O sistema é rápido e fácil de usar?&quot;. Se o usuário achar rápido, mas difícil, ele não saberá como responder. Separe em duas perguntas.</li>
+<li>Não induza a resposta: Em vez de &quot;Quanto você gosta da nova interface?&quot;, use &quot;Qual sua opinião sobre a nova interface?&quot;.</li>
+<li>Seja breve: Questionários que levam mais de 10 minutos para serem respondidos têm taxas de desistência altíssimas.</li>
+
+</ul>
+</div>
+<hr>
+<p><em>📚 Este material foi criado por <strong>Kristian Erdmann</strong> e compõe a base técnica da <strong>Unidade Curricular de Análise e Modelagem de Sistemas.</strong></em></p>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="2-4-tecnica-de-elicitacao---questionario" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

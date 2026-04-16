@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.8: Documento de Requisitos de Software (DRS) | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="3-8-documento-de-requisitos-de-software-drs">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>3.8: Documento de Requisitos de Software (DRS)</h1>
+      
+    </header>
+    <div class="content-body">
+      <h3>Introdução. O Contrato Técnico do Projeto</h3>
+<p>O DRS é o repositório oficial de todo o conhecimento minerado durante a elicitação e formalizado durante a análise. Ele não é apenas um &quot;arquivo de texto&quot;, mas sim a Linha de Base (Baseline) do projeto. Isso significa que qualquer funcionalidade desenvolvida deve estar prevista neste documento, e qualquer teste realizado deve validar o que foi escrito aqui.</p>
+<p>O DRS serve como um acordo entre o cliente (que valida o que será entregue) e a equipe de desenvolvimento (que utiliza o documento como guia de construção).</p>
+<hr>
+<h3>1. Estrutura Padrão de um DRS</h3>
+<p>Utilizando como base o modelo do SiamExpress (Sistema de Delivery), um DRS profissional deve ser organizado em capítulos que facilitam a leitura por diferentes perfis (gestores e desenvolvedores).</p>
+<h3>A. Identificação e Ficha Técnica</h3>
+<p>Todo documento deve começar com o controle de versões e a identificação das partes interessadas.</p>
+<ul>
+<li>Público-alvo. Define para quem o documento foi escrito (Devs, QAs, Designers).</li>
+<li>Histórico de Revisões. Essencial para a Gestão de Mudanças. Registra quem alterou o quê e quando.</li>
+</ul>
+<h3>B. Descrição Geral do Sistema</h3>
+<p>Nesta seção, o analista contextualiza o software sem entrar em detalhes técnicos profundos.</p>
+<ul>
+<li>Abrangência. Define os limites do sistema (o que ele faz e o que ele não faz).</li>
+<li>Tipos de Usuários. Mapeia os perfis que interagirão com o sistema (ex: Cliente, Entregador, Administrador).</li>
+</ul>
+<h3>C. Especificação dos Requisitos (O Coração do DRS)</h3>
+<p>É aqui que listamos todos os itens trabalhados nas páginas anteriores:</p>
+<ul>
+<li>Requisitos Funcionais (RF). Identificados por códigos (ex: [RF001]) e priorizados (MoSCoW).</li>
+<li>Requisitos Não Funcionais (NF). Agrupados por categorias como Desempenho, Segurança e Hardware/Software necessário.</li>
+<li>Regras de Negócio (RN). As leis que o sistema deve seguir (ex: políticas de cancelamento ou taxas de entrega).</li>
+</ul>
+<h3>D. Descrição de Interface e Protótipos</h3>
+<p>Uma seção opcional, mas recomendada, que contém rascunhos ou capturas de tela das telas principais. Isso ajuda a esclarecer fluxos de exceção e críticas de interface (tamanho de campos, máscaras, etc.).</p>
+<hr>
+<h3>2. Por que o DRS é indispensável?</h3>
+<p>Sem um DRS formalizado, o projeto fica vulnerável a três problemas graves:</p>
+<ul>
+<li>Scope Creep (Aumento de Escopo). O cliente pede &quot;só mais uma coisinha&quot; toda semana. Com o DRS, o analista pode dizer: &quot;Isso não está na linha de base; precisamos de uma análise de impacto e orçamento&quot;.</li>
+<li>Ambiguidade. O desenvolvedor entende &quot;A&quot; e o cliente queria &quot;B&quot;. O DRS é o &quot;juiz&quot; que resolve conflitos de interpretação.</li>
+<li>Perda de Conhecimento. Se o analista principal sair do projeto, o DRS garante que a inteligência do negócio permaneça na empresa.</li>
+</ul>
+<hr>
+<h3>3. Exemplo Prático. Detalhando um Item no DRS</h3>
+<p>No modelo do SiamExpress, a descrição de um requisito não é apenas uma frase. Ela segue um rigor técnico:</p>
+<p><strong>[RF005] Realizar Pedido</strong></p>
+<ul>
+<li>Descrição. O sistema deve permitir que o cliente selecione itens, adicione ao carrinho e finalize a compra.</li>
+<li>Prioridade. Essencial (Must Have).</li>
+<li>Entradas. Lista de produtos, forma de pagamento, endereço.</li>
+<li>Saídas. Confirmação de pedido e número de rastreio.</li>
+<li>Regras Relacionadas. RN02 (Taxa de Entrega), RN08 (Estoque Mínimo).</li>
+</ul>
+<hr>
+<div class="card">
+<h3 class="card-title">4. Boas Práticas na Elaboração</h3>
+<ul class="capabilities-list">
+
+<li>Seja Conciso. Evite textos literários. Use listas e tabelas.</li>
+<li>Mantenha a Rastreabilidade. Sempre use IDs (RF01, RN02) para que o desenvolvedor possa referenciar o requisito no código.</li>
+<li>Valide com o Cliente. O DRS só tem valor após o &quot;aceite&quot; (assinatura ou aprovação formal) do stakeholder principal.</li>
+
+</ul>
+</div>
+<hr>
+<h3>📝 Checkpoint de Entrega</h3>
+<p>Um DRS só está pronto para o Módulo de Desenvolvimento se:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Todos os requisitos possuem um ID único.</li>
+<li><input disabled="" type="checkbox"> As regras de negócio estão separadas das funcionalidades.</li>
+<li><input disabled="" type="checkbox"> O glossário define termos técnicos ou de negócio (ex: o que é &quot;Split de Pagamento&quot;).</li>
+<li><input disabled="" type="checkbox"> Os requisitos não funcionais são mensuráveis (não use &quot;o sistema deve ser rápido&quot;).</li>
+</ul>
+<p><a href="3%208%20Documento%20de%20Requisitos%20de%20Software%20(DRS)/Modelo%20Requisitos%2033ae75fa51d180ca854ff7180bba9e82.md">Modelo Requisitos</a></p>
+
+<div class="card" style="margin-top: 2rem;">
+<h3 class="card-title">📎 Anexos</h3>
+<ul class="capabilities-list">
+<li><a href="images/Modelo_Requisitos.pdf" target="_blank" style="text-decoration:none; color:inherit;"><strong>Modelo Requisitos.pdf</strong> (PDF Document)</a></li>
+</ul>
+</div>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="3-8-documento-de-requisitos-de-software-drs" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2: O Ciclo de Vida de Desenvolvimento de Sistemas (SDLC) | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="1-2-o-ciclo-de-vida-de-desenvolvimento-de-sistemas">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>1.2: O Ciclo de Vida de Desenvolvimento de Sistemas (SDLC)</h1>
+      
+    </header>
+    <div class="content-body">
+      <hr>
+<h2>🧠 Introdução: A Disciplina da Engenharia de Software</h2>
+<p>O desenvolvimento de um Sistema de Informação não é uma atividade linear de escrita de código, mas um processo de engenharia que visa transformar uma necessidade de negócio em uma solução tecnológica funcional e sustentável.</p>
+<p>O Ciclo de Vida (SDLC) fornece a estrutura necessária para que essa transformação ocorra com o mínimo de risco e o máximo de qualidade.</p>
+<p>Para que um sistema seja considerado <strong>&quot;bem construído&quot;</strong>, ele deve atravessar <strong>sete fases distintas</strong>, cada uma com seus próprios objetivos e entregáveis técnicos.</p>
+<hr>
+<h2>🧩 As 7 Fases do Ciclo de Vida</h2>
+<p><figure class="image-wrapper">
+<img src="images/sdlc.jpg" alt="sdlc.jpg">
+<figcaption>sdlc.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>1. Concepção e Estudo de Viabilidade</h3>
+<p>Nesta fase inicial, o objetivo é validar se o projeto faz sentido para a organização.</p>
+<ul>
+<li><p><strong>Análise de Problema</strong></p>
+<p>  Identificação do &quot;gargalo&quot; que o sistema deve resolver</p>
+</li>
+<li><p><strong>Viabilidade Técnica e Econômica</strong></p>
+<p>  Avalia-se se a tecnologia atual suporta a demanda e se o custo de desenvolvimento é menor que o benefício esperado (ROI)</p>
+</li>
+</ul>
+<div class="callout info">
+<p>� <strong>Entregável:</strong> Termo de Abertura ou Estudo de Viabilidade</p>
+</div>
+<p><figure class="image-wrapper">
+<img src="images/analise.jpg" alt="analise.jpg">
+<figcaption>analise.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>2. Engenharia de Requisitos (Elicitação e Análise)</h3>
+<p>Esta é a base de todo o projeto. É aqui que o analista descobre o que o sistema deve fazer.</p>
+<ul>
+<li><p><strong>Elicitação</strong></p>
+<p>  Uso de técnicas (entrevistas, observação) para extrair o conhecimento de negócio</p>
+</li>
+<li><p><strong>Análise de Requisitos</strong></p>
+<p>  Identificação de conflitos, ambiguidades e priorização do que é essencial</p>
+</li>
+</ul>
+<div class="callout info">
+<p>� <strong>Entregável:</strong> Documento de Especificação de Requisitos ou Backlog</p>
+</div>
+<p><figure class="image-wrapper">
+<img src="images/elicitacao.jpg" alt="elicitacao.jpg">
+<figcaption>elicitacao.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>3. Análise e Design (Projeto)</h3>
+<p>É a ponte entre o negócio e a tecnologia. Aqui utilizamos a UML para modelar a estrutura do software antes de codificar.</p>
+<ul>
+<li><p><strong>Arquitetura</strong></p>
+<p>  Definição da stack tecnológica e padrões (ex: MVC, Microsserviços)</p>
+</li>
+<li><p><strong>Modelagem</strong></p>
+<p>  Criação de diagramas de classe, sequência e banco de dados</p>
+</li>
+</ul>
+<div class="callout info">
+<p>� <strong>Entregável:</strong> Modelos UML e Protótipos de Interface</p>
+</div>
+<p><figure class="image-wrapper">
+<img src="images/modelagem.jpg" alt="modelagem.jpg">
+<figcaption>modelagem.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>4. Implementação (Codificação)</h3>
+<p>É a fase de tradução dos modelos e requisitos para uma linguagem de programação.</p>
+<ul>
+<li><p><strong>Escrita de Código</strong></p>
+<p>  Desenvolvimento das funcionalidades seguindo os padrões de design (Design Patterns) definidos na fase anterior</p>
+</li>
+<li><p><strong>Desenvolvimento de Testes Unitários</strong></p>
+<p>  O desenvolvedor garante que cada pequena parte do seu código funciona individualmente</p>
+</li>
+</ul>
+<div class="callout info">
+<p>� <strong>Entregável:</strong> Código-fonte versionado e documentado</p>
+</div>
+<p><figure class="image-wrapper">
+<img src="images/implementacao.jpg" alt="implementacao.jpg">
+<figcaption>implementacao.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>5. Testes e Garantia de Qualidade (QA)</h3>
+<p>Fase dedicada a encontrar falhas e garantir que o software atenda aos requisitos originais.</p>
+<ul>
+<li><p><strong>Testes de Integração e Sistema</strong></p>
+<p>  Verifica se os módulos conversam entre si e se o sistema completo funciona</p>
+</li>
+<li><p><strong>Validação (UAT)</strong></p>
+<p>  O usuário final testa o sistema para confirmar se ele atende à necessidade real do negócio</p>
+</li>
+</ul>
+<div class="callout info">
+<p>� <strong>Entregável:</strong> Plano e Relatórios de Testes</p>
+</div>
+<p><figure class="image-wrapper">
+<img src="images/testes.jpg" alt="testes.jpg">
+<figcaption>testes.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>6. Implantação (Deployment)</h3>
+<p>O momento crítico de transição do ambiente de desenvolvimento para o ambiente de produção.</p>
+<ul>
+<li><p><strong>Migração de Dados</strong></p>
+<p>  Transferência de informações de sistemas antigos para o novo</p>
+</li>
+<li><p><strong>Configuração de Ambiente</strong></p>
+<p>  Ajuste de servidores, bancos de dados e permissões de segurança</p>
+</li>
+<li><p><strong>Go-Live</strong></p>
+<p>  O sistema torna-se disponível para os usuários reais</p>
+</li>
+</ul>
+<div class="callout info">
+<p>� <strong>Entregável:</strong> Sistema rodando em ambiente de produção</p>
+</div>
+<p><figure class="image-wrapper">
+<img src="images/implantacao.jpg" alt="implantacao.jpg">
+<figcaption>implantacao.jpg</figcaption>
+</figure></p>
+<hr>
+<h3>7. Manutenção e Evolução</h3>
+<p>A fase mais longa e custosa do ciclo de vida, onde o software é ajustado ao longo do tempo.</p>
+<ul>
+<li><p><strong>Corretiva</strong></p>
+<p>  Correção de bugs não detectados nos testes</p>
+</li>
+<li><p><strong>Adaptativa</strong></p>
+<p>  Mudanças para que o software funcione em novos ambientes (ex: atualização de APIs externas)</p>
+</li>
+<li><p><strong>Evolutiva</strong></p>
+<p>  Implementação de novas regras de negócio para que o sistema não se torne obsoleto</p>
+</li>
+</ul>
+<div class="callout info">
+<p>� <strong>Entregável:</strong> Novas versões (releases) do sistema</p>
+</div>
+<p><figure class="image-wrapper">
+<img src="images/manutencao.jpg" alt="manutencao.jpg">
+<figcaption>manutencao.jpg</figcaption>
+</figure></p>
+<hr>
+<h2>📊 A Relação Custo vs. Tempo de Mudança</h2>
+<p>Um dos conceitos mais importantes para um analista é entender que a flexibilidade diminui à medida que o projeto avança.</p>
+<p>Um erro de entendimento na fase de Engenharia de Requisitos custa apenas o tempo de reescrever um parágrafo.</p>
+<p>O mesmo erro detectado na fase de Manutenção pode exigir a reescrita de milhares de linhas de código e a migração de milhões de registros de dados.</p>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Impacto Financeiro da Correção</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Requisitos</td>
+<td>Baixo (1x)</td>
+</tr>
+<tr>
+<td>Design/Projeto</td>
+<td>Moderado (3x - 5x)</td>
+</tr>
+<tr>
+<td>Implementação</td>
+<td>Alto (10x)</td>
+</tr>
+<tr>
+<td>Implantação/Manutenção</td>
+<td>Crítico (60x a 100x)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>🔁 Estratégias de Execução: Cascata vs. Iterativo</h2>
+<h3>🧱 Modelo Cascata</h3>
+<p>As 7 fases ocorrem em sequência linear.</p>
+<p>Só avançamos após a conclusão total da fase anterior.</p>
+<p>✔️ Ideal para sistemas onde o erro não é tolerado e os requisitos são imutáveis.</p>
+<hr>
+<h3>🔄 Modelo Iterativo e Incremental</h3>
+<p>O projeto é dividido em ciclos curtos.</p>
+<p>Em cada ciclo (iteração), percorremos as 7 fases para um pequeno conjunto de funcionalidades.</p>
+<p>✔️ Permite que a Implantação ocorra em partes</p>
+<p>✔️ Reduz risco</p>
+<p>✔️ Gera valor mais cedo</p>
+<hr>
+<div class="card">
+<h3 class="card-title">📝 Resumo Estrutural</h3>
+<ul class="capabilities-list">
+
+<li><strong>Concepção:</strong> Planejar o que é possível</li>
+<li><strong>Requisitos:</strong> Definir o que é necessário</li>
+<li><strong>Análise/Design:</strong> Modelar como será feito</li>
+<li><strong>Implementação:</strong> Construir o código</li>
+<li><strong>Testes:</strong> Garantir a qualidade</li>
+<li><strong>Implantação:</strong> Colocar em uso real</li>
+<li><strong>Manutenção:</strong> Evoluir e corrigir</li>
+
+</ul>
+</div>
+<hr>
+<p><em>📚 Este material foi criado por <strong>Kristian Erdmann</strong> e compõe a base técnica da <strong>Unidade Curricular de Análise e Modelagem de Sistemas.</strong></em></p>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="1-2-o-ciclo-de-vida-de-desenvolvimento-de-sistemas" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

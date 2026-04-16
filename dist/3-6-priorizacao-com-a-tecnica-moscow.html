@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.6: Priorização com a Técnica MoSCoW | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="3-6-priorizacao-com-a-tecnica-moscow">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>3.6: Priorização com a Técnica MoSCoW</h1>
+      
+    </header>
+    <div class="content-body">
+      <h3>Introdução: O Dilema do Escopo Infinito</h3>
+<p>É comum que, durante a fase de elicitação, os clientes listem centenas de requisitos, acreditando que todos são igualmente urgentes. No entanto, recursos (tempo, dinheiro e equipe) são finitos. Se tudo é prioridade, nada é prioridade.</p>
+<p>A técnica MoSCoW é um método de priorização que fornece uma linguagem comum para que o negócio e a TI decidam o que trará valor real agora e o que pode esperar. A priorização é um processo de <strong>negociação contínua</strong>.</p>
+<hr>
+<h3>1. A Anatomia do Acrônimo</h3>
+<p>O nome MoSCoW é um mnemônico formado pelas iniciais das quatro categorias de prioridade (com as letras &quot;o&quot; adicionadas apenas para facilitar a pronúncia):</p>
+<h3><strong>M - Must Have (Tenho que fazer)</strong></h3>
+<p>Estes são os requisitos <strong>críticos</strong> e inegociáveis. Sem eles, o produto simplesmente não funciona ou não atende ao seu propósito legal/operacional.</p>
+<ul>
+<li><strong>Critério:</strong> Se este requisito for retirado, o lançamento do sistema deve ser cancelado.</li>
+<li><strong>Exemplo:</strong> &quot;O sistema deve processar o pagamento via cartão para finalizar o pedido.&quot; (Em um e-commerce).</li>
+</ul>
+<h3><strong>S - Should Have (Devo fazer)</strong></h3>
+<p>Requisitos importantes, mas não vitais para o lançamento imediato. São funcionalidades que agregam muito valor, mas que possuem soluções temporárias (contornos manuais) se necessário.</p>
+<ul>
+<li><strong>Critério:</strong> A ausência causa dor ao usuário, mas o sistema ainda é funcional.</li>
+<li><strong>Exemplo:</strong> &quot;O sistema deve permitir a recuperação de senha via SMS.&quot; (Pode ser feito via e-mail na primeira versão).</li>
+</ul>
+<h3><strong>C - Could Have (Poderia fazer)</strong></h3>
+<p>Também conhecidos como &quot;Nice-to-have&quot; (Gostaria de ter). São desejos que melhoram a experiência ou a estética, mas têm baixo impacto no objetivo central do negócio.</p>
+<ul>
+<li><strong>Critério:</strong> Só serão feitos se houver tempo e orçamento sobrando após os itens &#39;M&#39; e &#39;S&#39;.</li>
+<li><strong>Exemplo:</strong> &quot;O sistema deve permitir a personalização das cores do painel pelo usuário.&quot;</li>
+</ul>
+<h3><strong>W - Won&#39;t Have (Não farei desta vez)</strong></h3>
+<p>Requisitos que foram discutidos, mas que o time e o cliente concordaram que <strong>não entrarão nesta entrega ou release</strong>.</p>
+<ul>
+<li><strong>Importância:</strong> Esta categoria é fundamental para evitar o &quot;Scope Creep&quot; (aumento descontrolado de escopo). Ela registra que o pedido foi ouvido, mas foi adiado para o futuro.</li>
+<li><strong>Exemplo:</strong> &quot;O sistema deve ter integração com realidade aumentada para visualização de produtos.&quot;</li>
+</ul>
+<p><figure class="image-wrapper">
+<img src="images/MSCW.webp" alt="MSCW.webp">
+<figcaption>MSCW.webp</figcaption>
+</figure></p>
+<hr>
+<h3>2. Regras de Ouro para uma Priorização Saudável</h3>
+<p>Para que o projeto tenha margem de segurança, a indústria utiliza a seguinte proporção de esforço:</p>
+<ul>
+<li><strong>Must Haves:</strong> Não devem ultrapassar <strong>60%</strong> do esforço total do projeto.</li>
+<li><strong>Should + Could:</strong> Devem compor os <strong>40%</strong> restantes.</li>
+</ul>
+<p><strong>Por que essa divisão?</strong> Se os imprevistos surgirem (e eles surgirão), você tem 40% de requisitos que podem ser adiados sem comprometer a entrega principal do sistema. Se você definir 90% como &quot;Must Have&quot;, qualquer erro de estimativa resultará em atraso na entrega final.</p>
+<hr>
+<h3>3. O Papel do Analista na Negociação</h3>
+<p>Muitas vezes, o cliente dirá que &quot;tudo é Must Have&quot;. O analista deve atuar como mediador técnico:</p>
+<ol>
+<li><strong>Questione a Dependência:</strong> &quot;Se não entregarmos isso na segunda-feira, a empresa para de funcionar?&quot;</li>
+<li><strong>Identifique Alternativas:</strong> &quot;Podemos fazer esse cálculo manualmente em uma planilha nos primeiros 15 dias?&quot;</li>
+<li><strong>Avalie o Risco:</strong> Requisitos com alto risco técnico ou muitas incertezas raramente devem ser &quot;Must Have&quot; em versões iniciais.</li>
+</ol>
+<hr>
+<h3>4. Relação com a Matriz de Rastreabilidade</h3>
+<p>Uma vez priorizados, os requisitos &#39;M&#39; (Must Have) são os primeiros a serem detalhados nos <strong>Diagramas de Caso de Uso e Sequência (UML)</strong>. A rastreabilidade garante que o esforço da equipe de desenvolvimento esteja focado exatamente no que o negócio definiu como vital.</p>
+<hr>
+<h3>🛠️ Prática Profissional: O Caso do App de Delivery</h3>
+<p>Imagine que você está priorizando o MVP (Produto Mínimo Viável) de um app de entregas. Classifique os requisitos abaixo usando MoSCoW:</p>
+<ol>
+<li>Listagem de restaurantes próximos. [ ]</li>
+<li>Pagamento via criptomoedas. [ ]</li>
+<li>Carrinho de compras e fechamento de pedido. [ ]</li>
+<li>Rastreamento do entregador em tempo real no mapa. [ ]</li>
+<li>Envio de cupons de desconto por notificação push. [ ]</li>
+</ol>
+<hr>
+<div class="card">
+<h3 class="card-title">📝 Resumo Técnico</h3>
+<ul class="capabilities-list">
+
+<li><strong>M:</strong> Obrigatório (Sobrevivência).</li>
+<li><strong>S:</strong> Importante (Eficiência).</li>
+<li><strong>C:</strong> Desejável (Satisfação).</li>
+<li><strong>W:</strong> Futuro (Planejamento).</li>
+
+</ul>
+</div>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="3-6-priorizacao-com-a-tecnica-moscow" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.4: Requisitos Não Funcionais. Atributos de Qualidade | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="3-4-requisitos-nao-funcionais-atributos-de-qualida">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>3.4: Requisitos Não Funcionais. Atributos de Qualidade</h1>
+      
+    </header>
+    <div class="content-body">
+      <h3>Introdução. O Software Além da Função</h3>
+<p>Se um sistema de banco permite transferir dinheiro (RF), mas demora 30 minutos para concluir a operação ou vaza os dados do cliente, ele falhou nos seus Requisitos Não Funcionais. Os RNFs são restrições aos serviços ou funções oferecidos pelo sistema. Eles definem as propriedades emergentes do software.</p>
+<p>Para padronizar essa análise, a Engenharia de Software utiliza a norma ISO/IEC 25010, que organiza os atributos de qualidade em categorias específicas.</p>
+<hr>
+<h3>1. As 6 Categorias Principais da ISO/IEC 25010</h3>
+<h3>A. Eficiência de Desempenho (Performance)</h3>
+<p>Refere-se ao comportamento do sistema em relação ao tempo e aos recursos utilizados.</p>
+<ul>
+<li>Tempo de Resposta. Quanto tempo o sistema leva para processar uma requisição.</li>
+<li>Capacidade. Quantos usuários ou transações o sistema suporta simultaneamente.</li>
+</ul>
+<p><strong>Exemplo Técnico:</strong></p>
+<p>&quot;O sistema deve processar a consulta de saldo em no máximo 2 segundos para até 1.000 conexões simultâneas.&quot;</p>
+<hr>
+<h3>B. Segurança</h3>
+<p>Proteção de informações e dados para que pessoas ou sistemas não autorizados não possam lê-los ou modificá-los.</p>
+<ul>
+<li>Confidencialidade. Apenas pessoas autorizadas acessam os dados.</li>
+<li>Integridade. Os dados não são alterados indevidamente.</li>
+<li>Não-repúdio. Prova de que uma ação ocorreu (ex: assinatura digital).</li>
+</ul>
+<p><strong>Exemplo Técnico:</strong></p>
+<p>&quot;Toda comunicação entre o cliente e o servidor deve ser criptografada utilizando o protocolo TLS 1.3.&quot;</p>
+<hr>
+<h3>C. Usabilidade (Operabilidade)</h3>
+<p>O grau em que o produto pode ser usado por usuários específicos para atingir objetivos com eficácia e satisfação.</p>
+<ul>
+<li>Estética. A interface deve ser agradável.</li>
+<li>Aprendizado. Quão fácil é aprender a usar o sistema.</li>
+</ul>
+<p><strong>Exemplo Técnico:</strong></p>
+<p>&quot;Um usuário leigo deve ser capaz de realizar o primeiro acesso e troca de senha sem auxílio de manuais em menos de 5 minutos.&quot;</p>
+<hr>
+<h3>D. Confiabilidade</h3>
+<p>A capacidade do sistema de manter seu nível de desempenho sob condições estabelecidas por um período de tempo.</p>
+<ul>
+<li>Disponibilidade. O sistema deve estar &quot;no ar&quot; quando necessário <strong>(99,9% do tempo)</strong>.</li>
+<li>Recuperabilidade. Capacidade de recuperar dados após uma falha.</li>
+</ul>
+<p><strong>Exemplo Técnico:</strong></p>
+<p>&quot;O sistema deve possuir um tempo médio de recuperação (MTTR) de no máximo <strong>1 hora</strong> em caso de falha crítica no banco de dados.&quot;</p>
+<hr>
+<h3>E. Manutenibilidade</h3>
+<p>A facilidade com que o software pode ser modificado para corrigir defeitos ou adaptar-se a novos requisitos.</p>
+<ul>
+<li>Modularidade. O código é dividido em partes independentes?</li>
+<li>Analisabilidade. É fácil diagnosticar a causa de uma falha?</li>
+</ul>
+<p><strong>Exemplo Técnico:</strong></p>
+<p>&quot;O sistema deve ser desenvolvido seguindo os princípios SOLID para permitir a troca do banco de dados sem alteração na lógica de negócio.&quot;</p>
+<hr>
+<h3>F. Portabilidade</h3>
+<p>A facilidade com que o sistema pode ser transferido de um ambiente para outro (Hardware ou Software).</p>
+<ul>
+<li>Adaptabilidade. Funciona em diferentes navegadores ou sistemas operacionais?</li>
+<li>Instalabilidade. É fácil de instalar?</li>
+</ul>
+<p><strong>Exemplo Técnico:</strong></p>
+<p>&quot;A aplicação front-end deve ser compatível com as versões mais recentes dos navegadores Chrome, Firefox e Safari.&quot;</p>
+<hr>
+<h3>2. Como Quantificar um RNF (O fim do &quot;adjetivo&quot;)</h3>
+<p>Um erro fatal de analistas iniciantes é usar termos subjetivos como &quot;rápido&quot;, &quot;seguro&quot; ou &quot;fácil&quot;. Requisitos Não Funcionais devem ser mensuráveis.</p>
+<table>
+<thead>
+<tr>
+<th>Errado (Subjetivo)</th>
+<th>Correto (Mensurável/Técnico)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&quot;O sistema deve ser rápido.&quot;</td>
+<td>&quot;O tempo de carregamento da página inicial não deve exceder <strong>1,5</strong> segundos em conexões 4G.&quot;</td>
+</tr>
+<tr>
+<td>&quot;O sistema deve ser seguro.&quot;</td>
+<td>&quot;As senhas devem ser armazenadas utilizando o algoritmo de hash Argon2id com salting.&quot;</td>
+</tr>
+<tr>
+<td>&quot;O sistema deve ser fácil de usar.&quot;</td>
+<td>&quot;A taxa de erro de usuários na tarefa de fechamento de caixa deve ser inferior a <strong>5%.</strong>&quot;</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>3. Conflitos entre Requisitos (Trade-offs)</h3>
+<p>Como analista, você descobrirá que os RNFs muitas vezes entram em conflito.</p>
+<ul>
+<li>Segurança vs. Usabilidade. Exigir autenticação de 2 fatores em cada clique torna o sistema seguro, mas irrita o usuário.</li>
+<li>Desempenho vs. Custo. Ter um sistema que responde em 10ms exige servidores caríssimos.</li>
+</ul>
+<p>O papel da Análise de Sistemas é encontrar o ponto de equilíbrio (Trade-off) baseado no orçamento e na necessidade do negócio.</p>
+<hr>
+<h3>4. A Relação com a Arquitetura</h3>
+<p>Enquanto os Requisitos Funcionais guiam a lógica do código, os Requisitos Não Funcionais guiam a Arquitetura. Se o sistema precisa ser altamente escalável, a arquitetura deve ser de Microsserviços. Se a segurança é o foco, a arquitetura deve priorizar camadas de isolamento.</p>
+<hr>
+<h3>🛠️ Prática de Especificação</h3>
+<p>Converta os desejos do cliente em RNFs técnicos:</p>
+<p>&quot;Não quero que o site caia na Black Friday.&quot;</p>
+<p><strong>RNF de Escalabilidade:</strong> &quot;O sistema deve suportar escalonamento horizontal automático para atender a picos de até 50.000 usuários simultâneos.&quot;</p>
+<p>&quot;Quero que meus dados de saúde fiquem protegidos.&quot;</p>
+<p><strong>RNF de Segurança/Privacidade:</strong> &quot;O sistema deve garantir a anonimização de dados sensíveis em conformidade com a LGPD e criptografia de repouso (At-rest).&quot;</p>
+<hr>
+<div class="card">
+<h3 class="card-title">📝 Resumo de Validação</h3>
+<ul class="capabilities-list">
+
+<li><input disabled="" type="checkbox"> O RNF está associado a uma métrica numérica?</li>
+<li><input disabled="" type="checkbox"> O RNF é viável dentro do orçamento do projeto?</li>
+<li><input disabled="" type="checkbox"> O RNF está classificado conforme a norma ISO?</li>
+
+</ul>
+</div>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="3-4-requisitos-nao-funcionais-atributos-de-qualida" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

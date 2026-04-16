@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.3: Regras de Negócio (RN). A Inteligência do Domínio | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="3-3-regras-de-negocio-rn-a-inteligencia-do-domin">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>3.3: Regras de Negócio (RN). A Inteligência do Domínio</h1>
+      
+    </header>
+    <div class="content-body">
+      <h3>Introdução. O Cérebro da Operação</h3>
+<p>Uma Regra de Negócio é uma declaração formal que define ou restringe algum aspecto do negócio. Segundo Vazquez &amp; Simões, a grande distinção técnica é que a Regra de Negócio existe independentemente de haver um sistema computacional.</p>
+<p>Se uma empresa decide que &quot;não vende para clientes negativados&quot;, essa é uma diretriz estratégica (negócio). O software apenas automatiza a verificação dessa diretriz. Tratar regras de negócio como simples &quot;linhas de código&quot; é um erro que gera sistemas rígidos e de difícil manutenção.</p>
+<hr>
+<h3>1. Taxonomia das Regras de Negócio</h3>
+<p>Para uma especificação profissional, as RNs devem ser classificadas de acordo com a sua natureza. Isso ajuda o desenvolvedor a decidir se a regra será implementada em uma validação de interface, em um cálculo no backend ou em uma constraint no banco de dados.</p>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Descrição</th>
+<th>Exemplo Técnico</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fato</td>
+<td>Uma verdade absoluta sobre o negócio que não muda.</td>
+<td>&quot;O período de garantia padrão para eletrônicos é de 12 meses.&quot;</td>
+</tr>
+<tr>
+<td>Restrição</td>
+<td>Impede uma ação ou limita as opções do usuário.</td>
+<td>&quot;Um pedido de venda não pode ser faturado se o cliente tiver débitos pendentes.&quot;</td>
+</tr>
+<tr>
+<td>Derivação (Cálculo)</td>
+<td>Define como um dado é transformado ou gerado.</td>
+<td>&quot;O valor do frete é calculado multiplicando-se o peso (kg) pela tarifa da zona postal.&quot;</td>
+</tr>
+<tr>
+<td>Ação / Gatilho</td>
+<td>Define uma consequência automática de um evento.</td>
+<td>&quot;Sempre que um item atingir o estoque mínimo, um alerta deve ser enviado ao compras.&quot;</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>2. O Desacoplamento. RF vs. RN</h3>
+<p>O segredo de uma arquitetura limpa é manter o Requisito Funcional (Ação) separado da Regra de Negócio (Condição).</p>
+<p>O Requisito Funcional (RF). É estável. Ex: &quot;O sistema deve emitir nota fiscal&quot;.</p>
+<p>A Regra de Negócio (RN). É volátil. Ex: &quot;A alíquota de imposto para serviços é de 5%&quot;.</p>
+<p>Se a prefeitura mudar a alíquota para 6%, você não muda a funcionalidade de emitir nota. Você apenas atualiza a regra de negócio. Em sistemas modernos, essas regras são frequentemente armazenadas em tabelas de configuração ou em Motores de Regras (Rule Engines), permitindo mudanças sem necessidade de novos deploys de código.</p>
+<hr>
+<h3>3. Como Especificar uma Regra de Negócio</h3>
+<p>No Notion, as RNs não devem ser escritas de forma narrativa longa, mas como declarações atômicas e declarativas.</p>
+<p><strong>Template sugerido:</strong></p>
+<ul>
+<li>Código: RN001</li>
+<li>Nome: Validação de Idade para Venda de Álcool.</li>
+<li>Descrição: O sistema não deve permitir a conclusão de vendas de itens da categoria &quot;Bebidas Alcoólicas&quot; para clientes com data de nascimento superior a 18 anos da data atual.</li>
+<li>Referência: Estatuto da Criança e do Adolescente (Lei Federal).</li>
+</ul>
+<hr>
+<h3>4. Regras de Negócio e a UML</h3>
+<p>Na modelagem visual (Gilleanes Guedes), as regras de negócio costumam aparecer em dois lugares principais:</p>
+<ul>
+<li>Notas de Diagramas. Textos anexados a classes ou casos de uso.</li>
+<li>OCL (Object Constraint Language). Uma linguagem formal da UML para descrever restrições que não podem ser expressas apenas por linhas e símbolos (ex: {idade &gt;= 18}).</li>
+</ul>
+<hr>
+<h3>🛠️ Estudo de Caso. Sistema de Estacionamento</h3>
+<p>Analise as sentenças abaixo e classifique-as para o seu material:</p>
+<ul>
+<li>&quot;O cliente tem que pagar 10 reais por hora.&quot; ➔ RN (Cálculo/Derivação).</li>
+<li>&quot;O sistema deve emitir um ticket na entrada.&quot; ➔ RF (Funcionalidade).</li>
+<li>&quot;Veículos de idosos não pagam nas primeiras 2 horas.&quot; ➔ RN (Restrição/Exceção).</li>
+<li>&quot;A tolerância para saída sem cobrança após o pagamento é de 15 minutos.&quot; ➔ RN (Fato/Política).</li>
+</ul>
+<hr>
+<h3>📝 Critérios de Excelência</h3>
+<p>Para garantir que a Regra de Negócio está bem definida:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Ela é independente da interface (não cita botões ou telas).</li>
+<li><input disabled="" type="checkbox"> Ela é atômica (trata de uma única política).</li>
+<li><input disabled="" type="checkbox"> Ela possui uma fonte de autoridade (quem definiu essa regra?).</li>
+<li><input disabled="" type="checkbox"> Ela é clara o suficiente para ser traduzida em uma condicional if/else ou consulta SQL.</li>
+</ul>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="3-3-regras-de-negocio-rn-a-inteligencia-do-domin" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

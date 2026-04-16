@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2: Técnicas de Elicitação de Requisitos — O Arsenal do Analista | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="2-2-tecnicas-de-elicitacao-de-requisitos---o-arsen">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>2.2: Técnicas de Elicitação de Requisitos — O Arsenal do Analista</h1>
+      
+    </header>
+    <div class="content-body">
+      <h2>Introdução: O Desafio da Descoberta</h2>
+<p>O maior obstáculo na elicitação é que o conhecimento de negócio costuma ser tácito (está na cabeça das pessoas, mas não está formalizado). O objetivo das técnicas de levantamento é transformar esse conhecimento tácito em conhecimento explícito (documentado e modelável).</p>
+<p>Abaixo, as principais técnicas utilizadas para capturar os requisitos de um sistema:</p>
+<hr>
+<h2>1. Entrevista</h2>
+<p>A técnica mais comum e direta. Consiste em uma conversa estruturada ou semiestruturada com os stakeholders.</p>
+<p><figure class="image-wrapper">
+<img src="images/entrevista.jpg" alt="entrevista.jpg">
+<figcaption>entrevista.jpg</figcaption>
+</figure></p>
+<p><strong>Aplicação:</strong></p>
+<p>Ideal para entender objetivos de alto nível, opiniões e sentimentos sobre o sistema atual.</p>
+<p><strong>Vantagem:</strong></p>
+<p>Permite o contato direto e a percepção de nuances (tom de voz, hesitações).</p>
+<p><strong>Desvantagem:</strong></p>
+<p>Consome muito tempo e o resultado depende da habilidade de comunicação do analista.</p>
+<hr>
+<h2>2. Questionário</h2>
+<p>Uma técnica quantitativa enviada a um grande número de pessoas.</p>
+<p><figure class="image-wrapper">
+<img src="images/questionrio.jpg" alt="questionário.jpg">
+<figcaption>questionário.jpg</figcaption>
+</figure></p>
+<p><strong>Aplicação:</strong></p>
+<p>Útil quando os usuários estão geograficamente dispersos ou quando se precisa de dados estatísticos (ex: &quot;70% dos usuários acham o sistema atual lento&quot;).</p>
+<p><strong>Vantagem:</strong></p>
+<p>Baixo custo e coleta rápida de grandes volumes de dados.</p>
+<p><strong>Desvantagem:</strong></p>
+<p>Não permite o aprofundamento em respostas vagas e as perguntas podem ser mal interpretadas.</p>
+<hr>
+<h2>3. Observação (Etnografia)</h2>
+<p>O analista atua como um &quot;sombra&quot;, acompanhando o usuário em sua rotina de trabalho real.</p>
+<p><figure class="image-wrapper">
+<img src="images/observacao.jpg" alt="observacao.jpg">
+<figcaption>observacao.jpg</figcaption>
+</figure></p>
+<p><strong>Aplicação:</strong></p>
+<p>Essencial para descobrir requisitos que o usuário esquece de mencionar por serem &quot;óbvios demais&quot; ou para identificar processos que divergem da regra oficial da empresa.</p>
+<p><strong>Vantagem:</strong></p>
+<p>Revela a realidade operacional nua e crua.</p>
+<p><strong>Desvantagem:</strong></p>
+<p>Pode ser invasiva e o comportamento do usuário pode mudar por se sentir observado (Efeito Hawthorne).</p>
+<hr>
+<h2>4. Prototipagem</h2>
+<p>Criação de versões simplificadas (baixa ou alta fidelidade) das interfaces e fluxos do sistema.</p>
+<p><strong>Aplicação:</strong></p>
+<p>Utilizada para validar requisitos visuais e de usabilidade antes da codificação.</p>
+<p><strong>Vantagem:</strong></p>
+<p>Reduz drasticamente a ambiguidade; o cliente &quot;vê&quot; o que está sendo planejado.</p>
+<p><strong>Desvantagem:</strong></p>
+<p>O cliente pode confundir o protótipo com o sistema real e achar que o projeto já está quase pronto.</p>
+<hr>
+<h2>5. JAD (Joint Application Design)</h2>
+<p>Workshops intensivos que reúnem analistas, desenvolvedores e stakeholders em uma mesma sala por um período determinado.</p>
+<p><strong>Aplicação:</strong></p>
+<p>Projetos de alta complexidade que exigem decisões rápidas e consenso entre departamentos.</p>
+<p><strong>Vantagem:</strong></p>
+<p>Acelera o processo de levantamento e reduz conflitos de requisitos.</p>
+<p><strong>Desvantagem:</strong></p>
+<p>Difícil de agendar e requer um moderador experiente para evitar que vozes dominantes abafem as outras.</p>
+<hr>
+<h2>6. Brainstorming</h2>
+<p>Sessões de geração de ideias sem julgamento imediato.</p>
+<p><strong>Aplicação:</strong></p>
+<p>Na fase inicial de concepção, para buscar soluções criativas para problemas de negócio.</p>
+<p><strong>Vantagem:</strong></p>
+<p>Estimula a inovação e o engajamento da equipe.</p>
+<p><strong>Desvantagem:</strong></p>
+<p>Pode gerar muitos requisitos irreais ou fora de escopo se não houver um filtro posterior.</p>
+<hr>
+<h2>7. Análise de Documentos e Benchmarking</h2>
+<p>Estudo de manuais de sistemas antigos, relatórios, formulários e análise de softwares concorrentes.</p>
+<p><strong>Aplicação:</strong></p>
+<p>Para entender as regras de negócio já estabelecidas e os padrões de mercado.</p>
+<p><strong>Vantagem:</strong></p>
+<p>Fornece uma base sólida e fatual que não depende da memória das pessoas.</p>
+<p><strong>Desvantagem:</strong></p>
+<p>Os documentos podem estar desatualizados em relação à prática real.</p>
+<hr>
+<h2>📈 Matriz de Seleção de Técnica</h2>
+<p>Um analista profissional raramente usa apenas uma técnica. A escolha depende do contexto:</p>
+<table>
+<thead>
+<tr>
+<th>Técnica</th>
+<th>Volume de Pessoas</th>
+<th>Profundidade da Informação</th>
+<th>Custo/Esforço</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Entrevista</td>
+<td>Baixo</td>
+<td>Alta</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>Questionário</td>
+<td>Alto</td>
+<td>Baixa</td>
+<td>Baixo</td>
+</tr>
+<tr>
+<td>Observação</td>
+<td>Baixo</td>
+<td>Altíssima</td>
+<td>Muito Alto</td>
+</tr>
+<tr>
+<td>JAD</td>
+<td>Médio</td>
+<td>Alta</td>
+<td>Muito Alto</td>
+</tr>
+<tr>
+<td>Prototipagem</td>
+<td>Médio</td>
+<td>Alta</td>
+<td>Médio</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>📝 Conclusão Geral</h2>
+<p>O segredo da elicitação eficaz está na triangulação: usar uma combinação de técnicas (ex: Entrevista para entender o topo, Questionário para a base e Observação para validar o meio). O resultado final desta fase deve ser um entendimento claro que permita ao analista começar a classificar o que é funcional e o que não é.</p>
+<hr>
+<p><em>📚 Este material foi criado por <strong>Kristian Erdmann</strong> e compõe a base técnica da <strong>Unidade Curricular de Análise e Modelagem de Sistemas.</strong></em></p>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="2-2-tecnicas-de-elicitacao-de-requisitos---o-arsen" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.1: Requisitos Funcionais — A Taxonomia da Ação | SENAI</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body data-page="lesson" data-id="3-1-requisitos-funcionais---a-taxonomia-da-acao">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="images/logo-senai.png" alt="SENAI" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-menu" id="sidebar-menu">
+      <!-- Injetado via app.js -->
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="hero">
+      
+      <h1>3.1: Requisitos Funcionais — A Taxonomia da Ação</h1>
+      
+    </header>
+    <div class="content-body">
+      <h3>Introdução: O Filtro da Especificação</h3>
+<p>Na Engenharia de Requisitos orientada ao negócio, o Requisito Funcional é a descrição de um serviço que o sistema deve fornecer ou de como ele deve reagir a entradas específicas. Enquanto a elicitação nos traz o &quot;problema&quot;, a especificação funcional define a &quot;solução lógica&quot;.</p>
+<p>Um erro comum é confundir o Processo de Negócio com a Funcionalidade.</p>
+<ul>
+<li><strong>Processo:</strong> &quot;O cliente paga a conta.&quot; (Ocorre no mundo real).</li>
+<li><strong>Funcionalidade (RF):</strong> &quot;O sistema deve registrar a transação financeira e atualizar o saldo do cliente.&quot; (Ocorre no software).</li>
+</ul>
+<hr>
+<h3>1. A Sintaxe da Escrita Profissional</h3>
+<p>Para evitar ambiguidades que custam caro na fase de testes, especialistas como Vazquez &amp; Simões sugerem uma estrutura rígida para a redação de um RF. Um requisito bem escrito deve seguir a fórmula:</p>
+<p><strong>[Sujeito/Ator] + [Verbo de Ação] + [Objeto] + [Condição/Restrição]</strong></p>
+<ul>
+<li><strong>Exemplo Amador:</strong> &quot;Fazer o login do usuário.&quot; (Vago, sem ator definido).</li>
+<li><strong>Exemplo Profissional:</strong> &quot;O Sistema de Autenticação deve validar as credenciais do Usuário através de protocolo OAuth 2.0.&quot;</li>
+</ul>
+<div class="card">
+<h3 class="card-title">Atributos de um RF de Alta Qualidade:</h3>
+<ul class="capabilities-list">
+
+<li><strong>Atômico:</strong> Trata de apenas uma função. Se você usar a conjunção &quot;e&quot; no meio da frase, provavelmente tem dois requisitos que devem ser separados.</li>
+<li><strong>Não Ambíguo:</strong> Não usa termos como &quot;rápido&quot;, &quot;intuitivo&quot; ou &quot;se possível&quot;.</li>
+<li><strong>Testável:</strong> Um desenvolvedor ou QA deve conseguir criar um teste de &quot;Passou/Falhou&quot; para essa frase.</li>
+
+</ul>
+</div>
+<hr>
+<h3>2. Taxonomia: Classificação das Funcionalidades</h3>
+<p>Nem todos os requisitos funcionais têm a mesma natureza. Para organizar o backlog, classificamos os RFs em categorias de operação:</p>
+<table>
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Descrição</th>
+<th>Exemplo Técnico</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Entrada (Input)</td>
+<td>Captura de dados externos para o sistema.</td>
+<td>&quot;O sistema deve permitir a importação de arquivos .CSV contendo a lista de produtos.&quot;</td>
+</tr>
+<tr>
+<td>Saída (Output)</td>
+<td>Dados processados enviados para o exterior.</td>
+<td>&quot;O sistema deve emitir o comprovante de venda em formato PDF após a confirmação.&quot;</td>
+</tr>
+<tr>
+<td>Consulta (Query)</td>
+<td>Recuperação de dados sem alteração de estado.</td>
+<td>&quot;O sistema deve exibir o histórico de pedidos dos últimos 6 meses para o Cliente.&quot;</td>
+</tr>
+<tr>
+<td>Processamento</td>
+<td>Transformações lógicas ou cálculos internos.</td>
+<td>&quot;O sistema deve calcular o valor do ICMS com base na UF de destino do pedido.&quot;</td>
+</tr>
+<tr>
+<td>Manutenção (CRUD)</td>
+<td>Inclusão, Alteração e Exclusão de dados.</td>
+<td>&quot;O sistema deve permitir a alteração dos dados cadastrais do fornecedor.&quot;</td>
+</tr>
+</tbody></table>
+<hr>
+<h3>3. Requisitos de Sistema vs. Requisitos de Software</h3>
+<p>É vital distinguir o escopo:</p>
+<ul>
+<li><strong>Requisitos de Sistema:</strong> Envolvem o hardware, o software e as pessoas (ex: &quot;O terminal de autoatendimento deve imprimir um ticket térmico&quot;).</li>
+<li><strong>Requisitos de Software:</strong> Focam exclusivamente no que o código deve executar (ex: &quot;O módulo de impressão deve enviar os dados brutos para o spooler da impressora&quot;).</li>
+</ul>
+<hr>
+<h3>4. A Ponte com a Modelagem (UML)</h3>
+<p>Nesta etapa, o RF serve como o &quot;input&quot; para os diagramas que veremos no Módulo 4.</p>
+<ul>
+<li>Um Requisito Funcional muitas vezes se torna um Caso de Uso.</li>
+<li>A lógica interna do requisito (os passos para executá-lo) será detalhada posteriormente nos Diagramas de Sequência e Atividades.</li>
+</ul>
+<hr>
+<h3>🛠️ Laboratório Prático: Refatoração de Requisitos</h3>
+<p>Abaixo estão requisitos extraídos de uma entrevista real com um dono de livraria. Sua missão é entender como transformá-los em RFs técnicos:</p>
+<ul>
+<li><p>&quot;Quero que o sistema avise quando o livro estiver acabando.&quot;</p>
+<p>  <strong>Refatoração Técnica (RF):</strong></p>
+<p>  &quot;O sistema deve emitir uma notificação automática para o Gerente de Compras sempre que o nível de estoque de um título for inferior a 5 unidades.&quot;</p>
+</li>
+<li><p>&quot;O cliente pode devolver o livro se não gostar, mas tem que ser em 7 dias.&quot;</p>
+<p>  <strong>Refatoração Técnica (RF):</strong></p>
+<p>  &quot;O sistema deve permitir o estorno de vendas de livros.&quot;</p>
+<p>  (A parte dos 7 dias será tratada em Regras de Negócio na próxima página).</p>
+</li>
+</ul>
+<hr>
+<h3>📝 Checkpoint de Qualidade</h3>
+<p>Antes de postar no Notion, verifique se o requisito responde:</p>
+<ul>
+<li><input disabled="" type="checkbox"> Quem executa? (Ator)</li>
+<li><input disabled="" type="checkbox"> O que é executado? (Ação)</li>
+<li><input disabled="" type="checkbox"> Onde termina a ação? (Resultado)</li>
+<li><input disabled="" type="checkbox"> É possível testar isso? (Verificabilidade)</li>
+</ul>
+
+    </div>
+    <div class="progress-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+      <label style="display: flex; align-items: center; gap: 8px; font-weight: bold; cursor: pointer;">
+        <input type="checkbox" id="mark-completed" data-id="3-1-requisitos-funcionais---a-taxonomia-da-acao" style="width: 20px; height: 20px;">
+        Marcar como concluído
+      </label>
+    </div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
